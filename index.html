@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Seven Classic Ind. Ltd. - Live Material Tracker</title>
+<title>Seven Classic Ind. Ltd. - Material Balance Tracker</title>
 
 <style>
+
 :root {
     --bg-color: #1a1d24;
     --card-bg: #13161c;
@@ -26,25 +27,26 @@
 
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--bg-color);
+    background-color: var(--bg-color);
     color: var(--text-main);
     margin: 0;
-    padding: 30px 20px;
+    padding: 25px 15px;
     min-height: 100vh;
 }
 
 .container {
     width: 100%;
-    max-width: 950px;
+    max-width: 1100px;
     margin: auto;
 }
 
-/* =========================
+
+/* =====================================================
    ADMIN PANEL
-========================= */
+===================================================== */
 
 .admin-panel {
-    background: var(--admin-bg);
+    background-color: var(--admin-bg);
     border: 2px dashed var(--blue);
     border-radius: 8px;
     padding: 25px;
@@ -63,6 +65,13 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+}
+
+.admin-status {
+    color: var(--green);
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: none;
 }
 
 .form-grid {
@@ -86,9 +95,9 @@ body {
 .form-group input,
 .form-group select {
     width: 100%;
-    background: var(--card-bg);
+    background-color: var(--card-bg);
     border: 1px solid var(--border);
-    color: white;
+    color: #fff;
     padding: 10px;
     border-radius: 5px;
     font-size: 14px;
@@ -110,46 +119,43 @@ body {
 }
 
 .btn-blue {
-    background: var(--blue);
-    color: white;
+    background-color: var(--blue);
+    color: #fff;
 }
 
 .btn-blue:hover {
-    background: #2584c2;
+    background-color: #2584c2;
 }
 
 .btn-red {
-    background: var(--red);
-    color: white;
+    background-color: var(--red);
+    color: #fff;
     padding: 5px 9px;
     font-size: 12px;
 }
 
 .btn-edit {
-    background: #f39c12;
-    color: white;
+    background-color: #f39c12;
+    color: #fff;
     padding: 5px 9px;
     font-size: 12px;
-    margin-right: 5px;
+    margin-bottom: 4px;
 }
 
 .btn-logout {
-    background: #555;
-    color: white;
+    background-color: #555;
+    color: #fff;
     font-size: 12px;
     padding: 7px 12px;
 }
 
-.btn-logout:hover {
-    background: #666;
-}
 
-/* =========================
+/* =====================================================
    DASHBOARD
-========================= */
+===================================================== */
 
 .dashboard {
-    background: var(--card-bg);
+    background-color: var(--card-bg);
     border-radius: 8px;
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -161,7 +167,7 @@ body {
 }
 
 .company-name {
-    font-size: 14px;
+    font-size: 35px;
     color: var(--text-muted);
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -169,42 +175,71 @@ body {
 }
 
 .title {
-    font-size: 22px;
-    margin: 6px 0 0;
+    font-size: 26px;
+    margin: 6px 0 0 0;
     font-weight: 600;
 }
 
-/* TABLE */
+
+/* =====================================================
+   TABLE
+===================================================== */
 
 .table-title-row,
 .material-row {
+
     display: grid;
-    grid-template-columns: 220px 1fr 180px 90px;
-    gap: 20px;
+
+    grid-template-columns:
+        190px
+        minmax(180px, 1fr)
+        140px
+        110px
+        130px
+        85px;
+
+    gap: 15px;
+
     align-items: center;
 }
 
 .table-title-row {
+
     margin-bottom: 18px;
+
     padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
+
+    border-bottom:
+        1px solid var(--border);
 }
 
 .table-title-text {
-    font-size: 13px;
+
+    font-size: 16px;
+
     color: var(--text-muted);
+
     font-weight: bold;
+
     text-transform: uppercase;
 }
 
 .materials-container {
-    margin-bottom: 30px;
+
+    margin-bottom: 25px;
+
     min-height: 30px;
 }
 
 .material-row {
+
     margin-bottom: 25px;
 }
+
+
+/* =====================================================
+   MATERIAL
+===================================================== */
 
 .info-col {
     display: flex;
@@ -212,7 +247,7 @@ body {
 }
 
 .material-name {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -227,10 +262,13 @@ body {
     margin-top: 4px;
 }
 
-/* PROGRESS */
+
+/* =====================================================
+   PROGRESS
+===================================================== */
 
 .progress-wrapper {
-    background: #1a1e26;
+    background-color: #1a1e26;
     border-radius: 20px;
     height: 14px;
     width: 100%;
@@ -244,84 +282,172 @@ body {
 }
 
 .bg-green {
-    background: var(--green);
+    background-color: var(--green);
 }
 
 .bg-red {
-    background: var(--red);
+    background-color: var(--red);
 }
 
 .bg-yellow {
-    background: var(--yellow);
+    background-color: var(--yellow);
 }
+
+
+/* =====================================================
+   REMAINING BALANCE
+===================================================== */
 
 .qty-col {
     text-align: right;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 20px;
     line-height: 1.4;
 }
 
-.usd-live-val {
-    font-size: 12px;
-    color: var(--text-muted);
-    font-weight: normal;
-    display: block;
-}
-
-.low-stock-text {
+.good-stock-text {
     color: var(--red);
 }
 
-.good-stock-text {
+.low-stock-text {
     color: var(--green);
 }
 
-/* AXIS */
+.usd-live-val {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: normal;
+}
+
+
+/* =====================================================
+   UNIT PRICE
+===================================================== */
+
+.unit-price-col {
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.price-label {
+    display: block;
+    color: var(--text-muted);
+    font-size: 10px;
+    font-weight: normal;
+    margin-top: 3px;
+}
+
+
+/* =====================================================
+   TOTAL VALUE
+===================================================== */
+
+.total-value-col {
+    text-align: right;
+    color: var(--green);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   ACTION
+===================================================== */
+
+.action-col {
+    display: none;
+    text-align: center;
+}
+
+body.admin-logged-in .action-col {
+    display: block;
+}
+
+
+/* =====================================================
+   AXIS LABELS
+===================================================== */
 
 .axis-labels {
+
     display: grid;
-    grid-template-columns: 220px 1fr 180px 90px;
-    gap: 20px;
+
+    grid-template-columns:
+        190px
+        minmax(180px, 1fr)
+        140px
+        110px
+        130px
+        85px;
+
+    gap: 15px;
+
     margin-bottom: 30px;
 }
 
 .labels-flex {
+
     grid-column: 2;
+
     display: flex;
+
     justify-content: space-between;
+
     color: var(--text-muted);
+
     font-size: 12px;
+
     padding: 0 5px;
 }
 
-/* FOOTER */
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 .footer-metrics {
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid var(--border);
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    border-top:
+        1px solid var(--border);
+
     padding-top: 25px;
+
     text-align: center;
 }
 
 .metric-box {
-    border-right: 1px solid var(--border);
+
+    border-right:
+        1px solid var(--border);
 }
 
 .metric-box:last-child {
+
     border-right: none;
 }
 
 .metric-label {
+
     font-size: 12px;
+
     color: var(--text-muted);
+
     text-transform: uppercase;
+
     margin-bottom: 8px;
 }
 
 .metric-value {
+
     font-size: 24px;
+
     font-weight: bold;
 }
 
@@ -333,92 +459,91 @@ body {
     color: var(--red);
 }
 
-.text-yellow {
-    color: var(--yellow);
-}
 
-/* =========================
-   ADMIN BUTTON
-========================= */
+/* =====================================================
+   ADMIN ACCESS
+===================================================== */
 
 .admin-trigger-zone {
+
     text-align: center;
+
     margin-top: 30px;
+
     padding-bottom: 20px;
-    width: 100%;
 }
 
 .login-btn {
-    background: #242933;
-    border: 1px solid var(--border);
+
+    background-color: #242933;
+
+    border:
+        1px solid var(--border);
+
     color: #d1d5db;
+
     font-size: 14px;
+
     padding: 12px 28px;
+
     border-radius: 6px;
+
     cursor: pointer;
+
     font-weight: bold;
 
     display: inline-flex;
+
     align-items: center;
+
     gap: 8px;
 
     transition: all 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,0.3);
 }
 
 .login-btn:hover {
-    background: var(--blue);
-    color: white;
+
+    background-color: var(--blue);
+
+    color: #fff;
+
     border-color: var(--blue);
-    transform: translateY(-2px);
+
+    transform:
+        translateY(-2px);
 }
 
-/* ACTION COLUMN */
 
-.action-col {
-    display: none;
-    text-align: center;
-}
-
-body.admin-logged-in .action-col {
-    display: block;
-}
-
-/* EMPTY */
+/* =====================================================
+   EMPTY
+===================================================== */
 
 .empty-message {
+
     text-align: center;
+
     color: var(--text-muted);
+
     padding: 40px 10px;
-    border: 1px dashed var(--border);
+
+    border:
+        1px dashed var(--border);
+
     border-radius: 6px;
 }
 
-/* ADMIN STATUS */
 
-.admin-status {
-    color: var(--green);
-    font-size: 12px;
-    font-weight: normal;
-    text-transform: none;
-}
-
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
-@media (max-width: 800px) {
-
-    body {
-        padding: 15px;
-    }
+@media (max-width: 1000px) {
 
     .dashboard {
-        padding: 20px 15px;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
+        padding: 22px 15px;
     }
 
     .table-title-row {
@@ -426,19 +551,29 @@ body.admin-logged-in .action-col {
     }
 
     .material-row {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
 
-        padding: 15px 0;
-        border-bottom: 1px solid var(--border);
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 12px;
+
+        padding: 18px 0;
+
+        border-bottom:
+            1px solid var(--border);
+    }
+
+    .info-col {
+        grid-column: 1 / -1;
     }
 
     .progress-wrapper {
-        margin-top: 5px;
+        grid-column: 1 / -1;
     }
 
-    .qty-col {
+    .qty-col,
+    .unit-price-col,
+    .total-value-col {
         text-align: left;
     }
 
@@ -449,6 +584,23 @@ body.admin-logged-in .action-col {
     .axis-labels {
         display: none;
     }
+}
+
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
     .footer-metrics {
         grid-template-columns: 1fr;
@@ -457,7 +609,8 @@ body.admin-logged-in .action-col {
 
     .metric-box {
         border-right: none;
-        border-bottom: 1px solid var(--border);
+        border-bottom:
+            1px solid var(--border);
         padding-bottom: 15px;
     }
 
@@ -469,343 +622,496 @@ body.admin-logged-in .action-col {
         font-size: 19px;
     }
 
-    .admin-title {
-        flex-direction: column;
-        align-items: flex-start;
+    .material-row {
+        grid-template-columns: 1fr;
+    }
+
+    .qty-col,
+    .unit-price-col,
+    .total-value-col,
+    .action-col {
+        text-align: left;
     }
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <div class="container">
 
-    <!-- =========================
-         ADMIN PANEL
-    ========================== -->
 
-    <div class="admin-panel" id="adminPanel">
+<!-- =====================================================
+     ADMIN PANEL
+===================================================== -->
 
-        <div class="admin-title">
+<div
+    class="admin-panel"
+    id="adminPanel">
 
-            <div>
-                Raw Materials Entry Form
+    <div class="admin-title">
 
-                <span class="admin-status">
-                    ● Admin Mode
-                </span>
-            </div>
+        <div>
 
-            <button
-                class="btn btn-logout"
-                onclick="logoutAdmin()">
-                Close Admin Panel
-            </button>
+            RAW MATERIALS ENTRY FORM
+
+            <span class="admin-status">
+                ● Admin Mode
+            </span>
 
         </div>
-
-        <form id="materialForm" onsubmit="saveMaterial(event)">
-
-            <div class="form-grid">
-
-                <div class="form-group">
-                    <label>Material Name</label>
-
-                    <input
-                        type="text"
-                        id="matName"
-                        required
-                        placeholder="e.g. Duplex Board">
-                </div>
-
-                <div class="form-group">
-                    <label>Maximum Qty (Capacity)</label>
-
-                    <input
-                        type="number"
-                        id="maxQty"
-                        min="0"
-                        step="any"
-                        required
-                        placeholder="e.g. 10000">
-                </div>
-
-                <div class="form-group">
-                    <label>Current Stock</label>
-
-                    <input
-                        type="number"
-                        id="currentQty"
-                        min="0"
-                        step="any"
-                        required
-                        placeholder="e.g. 6000">
-                </div>
-
-                <div class="form-group">
-                    <label>Unit</label>
-
-                    <input
-                        type="text"
-                        id="unit"
-                        required
-                        placeholder="Kg, Pcs, Yards">
-                </div>
-
-                <div class="form-group">
-                    <label>Full Budget Value ($)</label>
-
-                    <input
-                        type="number"
-                        id="fullValue"
-                        min="0"
-                        step="any"
-                        required
-                        placeholder="e.g. 19000">
-                </div>
-
-                <div class="form-group">
-
-                    <label>Highlight Blue?</label>
-
-                    <select id="isBlue">
-
-                        <option value="false">
-                            No
-                        </option>
-
-                        <option value="true">
-                            Yes
-                        </option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-            <button
-                type="submit"
-                class="btn btn-blue"
-                id="saveButton">
-                Save & Update Stock
-            </button>
-
-            <button
-                type="button"
-                class="btn btn-logout"
-                id="cancelEditButton"
-                onclick="cancelEdit()"
-                style="display:none;">
-                Cancel Edit
-            </button>
-
-        </form>
-
-    </div>
-
-
-    <!-- =========================
-         DASHBOARD
-    ========================== -->
-
-    <div class="dashboard">
-
-        <div class="header">
-
-            <div class="company-name">
-                Seven Classic Ind. Ltd.
-            </div>
-
-            <div class="title">
-                Live Raw Material Balance Tracker
-            </div>
-
-        </div>
-
-
-        <!-- TABLE HEADER -->
-
-        <div class="table-title-row">
-
-            <div class="table-title-text">
-                Raw Materials Name
-            </div>
-
-            <div></div>
-
-            <div
-                class="table-title-text"
-                style="text-align:right;">
-                Live Status / Stock
-            </div>
-
-            <div class="table-title-text action-col">
-                Action
-            </div>
-
-        </div>
-
-
-        <!-- MATERIALS -->
-
-        <div
-            class="materials-container"
-            id="materials-list">
-
-            <div class="empty-message">
-                No raw materials added yet.
-                <br>
-                Login to Admin Panel to add materials.
-            </div>
-
-        </div>
-
-
-        <!-- AXIS -->
-
-        <div class="axis-labels">
-
-            <div></div>
-
-            <div class="labels-flex">
-
-                <span>20%</span>
-                <span>40%</span>
-                <span>60%</span>
-                <span>80%</span>
-                <span>100%</span>
-
-            </div>
-
-            <div></div>
-            <div></div>
-
-        </div>
-
-
-        <!-- FOOTER METRICS -->
-
-        <div class="footer-metrics">
-
-            <div class="metric-box">
-
-                <div class="metric-label">
-                    Total Value
-                </div>
-
-                <div
-                    class="metric-value"
-                    id="total-value">
-                    $0
-                </div>
-
-            </div>
-
-
-            <div class="metric-box">
-
-                <div class="metric-label">
-                    Current Asset Value
-                </div>
-
-                <div
-                    class="metric-value text-green"
-                    id="current-asset-value">
-                    $0
-                </div>
-
-            </div>
-
-
-            <div class="metric-box">
-
-                <div class="metric-label">
-                    Low Balance Warning
-                </div>
-
-                <div
-                    class="metric-value"
-                    id="low-warning">
-                    0
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         ADMIN ACCESS BUTTON
-    ========================== -->
-
-    <div class="admin-trigger-zone">
 
         <button
-            class="login-btn"
-            onclick="openAdminPanel()">
+            type="button"
+            class="btn btn-logout"
+            onclick="logoutAdmin()">
 
-            🔐 Admin Panel Access
+            Close Admin Panel
 
         </button>
+
+    </div>
+
+
+    <form
+        id="materialForm"
+        onsubmit="saveMaterial(event)">
+
+
+        <div class="form-grid">
+
+
+            <!-- MATERIAL NAME -->
+
+            <div class="form-group">
+
+                <label>
+                    Material Name
+                </label>
+
+                <input
+                    type="text"
+                    id="matName"
+                    required
+                    placeholder="e.g. Duplex">
+
+            </div>
+
+
+            <!-- TOTAL KG -->
+
+            <div class="form-group">
+
+                <label>
+                    Total Kg
+                </label>
+
+                <input
+                    type="number"
+                    id="maxQty"
+                    min="0"
+                    step="any"
+                    required
+                    placeholder="e.g. 10000">
+
+            </div>
+
+
+            <!-- REMAINING BALANCE -->
+
+            <div class="form-group">
+
+                <label>
+                    Remaining Balance
+                </label>
+
+                <input
+                    type="number"
+                    id="remainingBalance"
+                    min="0"
+                    step="any"
+                    required
+                    placeholder="e.g. 6000">
+
+            </div>
+
+
+            <!-- UNIT -->
+
+            <div class="form-group">
+
+                <label>
+                    Unit
+                </label>
+
+                <input
+                    type="text"
+                    id="unit"
+                    required
+                    placeholder="Kg">
+
+            </div>
+
+
+            <!-- UNIT PRICE -->
+
+            <div class="form-group">
+
+                <label>
+                    Unit Price ($)
+                </label>
+
+                <input
+                    type="number"
+                    id="unitPrice"
+                    min="0"
+                    step="any"
+                    required
+                    placeholder="e.g. 0.80">
+
+            </div>
+
+
+            <!-- BLUE -->
+
+            <div class="form-group">
+
+                <label>
+                    Highlight Blue?
+                </label>
+
+                <select id="isBlue">
+
+                    <option value="false">
+                        No
+                    </option>
+
+                    <option value="true">
+                        Yes
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="btn btn-blue"
+            id="saveButton">
+
+            Save Material
+
+        </button>
+
+
+        <button
+            type="button"
+            class="btn btn-logout"
+            id="cancelEditButton"
+            onclick="cancelEdit()"
+            style="display:none;">
+
+            Cancel Edit
+
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<div class="dashboard">
+
+
+    <div class="header">
+
+        <div class="company-name">
+
+            Seven Classic Ind. Ltd.
+
+        </div>
+
+        <div class="title">
+
+            Live Raw Material Balance Tracker
+
+        </div>
+
+    </div>
+
+
+    <!-- TABLE HEADER -->
+
+    <div class="table-title-row">
+
+        <div class="table-title-text">
+            Raw Materials
+        </div>
+
+        <div class="table-title-text">
+            Balance Level
+        </div>
+
+        <div
+            class="table-title-text"
+            style="text-align:right;">
+
+            Remaining Balance
+
+        </div>
+
+        <div
+            class="table-title-text"
+            style="text-align:right;">
+
+            Unit Price
+
+        </div>
+
+        <div
+            class="table-title-text"
+            style="text-align:right;">
+
+            Total Value
+
+        </div>
+
+        <div class="table-title-text action-col">
+            Action
+        </div>
+
+    </div>
+
+
+    <!-- MATERIAL LIST -->
+
+    <div
+        class="materials-container"
+        id="materials-list">
+
+    </div>
+
+
+    <!-- AXIS -->
+
+    <div class="axis-labels">
+
+        <div></div>
+
+        <div class="labels-flex">
+
+            <span>20%</span>
+            <span>40%</span>
+            <span>60%</span>
+            <span>80%</span>
+            <span>100%</span>
+
+        </div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+    </div>
+
+
+    <!-- =================================================
+         FOOTER METRICS
+    ================================================= -->
+
+    <div class="footer-metrics">
+
+
+        <!-- TOTAL REMAINING KG -->
+
+        <div class="metric-box">
+
+            <div class="metric-label">
+    Remaining Raw Material Volume
+</div>
+
+            <div
+                class="metric-value"
+                id="total-kg">
+
+                0 kg
+
+            </div>
+
+        </div>
+
+
+        <!-- TOTAL VALUE -->
+
+        <div class="metric-box">
+
+            <div class="metric-label">
+                Total Value
+            </div>
+
+            <div
+                class="metric-value text-green"
+                id="total-value">
+
+                $0.00
+
+            </div>
+
+        </div>
+
+
+        <!-- LOW BALANCE -->
+
+        <div class="metric-box">
+
+            <div class="metric-label">
+                Low Balance Warning
+            </div>
+
+            <div
+                class="metric-value text-green"
+                id="low-warning">
+
+                0
+
+            </div>
+
+        </div>
 
     </div>
 
 </div>
 
 
+<!-- ADMIN ACCESS -->
+
+<div class="admin-trigger-zone">
+
+    <button
+        type="button"
+        class="login-btn"
+        onclick="openAdminPanel()">
+
+        🔐 Admin Panel Access
+
+    </button>
+
+</div>
+
+
+</div>
+
+
 <script>
 
-/* ==========================================
+
+/* =====================================================
    SETTINGS
-========================================== */
+===================================================== */
 
-const ADMIN_PASSWORD = "admin123";
+const ADMIN_PASSWORD = "seven8081";
 
-const STORAGE_KEY = "sevenClassicMaterials";
+const STORAGE_KEY =
+    "sevenClassicMaterials";
 
 let materials = [];
 
 let editingIndex = -1;
 
 
-/* ==========================================
+/* =====================================================
    LOAD DATA
-========================================== */
+===================================================== */
 
 function loadMaterials() {
 
-    const savedData =
+    const saved =
         localStorage.getItem(STORAGE_KEY);
 
-    if (savedData) {
 
-        try {
+    if (!saved) {
 
-            materials = JSON.parse(savedData);
+        materials = [];
 
-        } catch (error) {
+        renderMaterials();
 
-            materials = [];
+        return;
+    }
 
-        }
 
-    } else {
+    try {
+
+        materials =
+            JSON.parse(saved);
+
+
+        /*
+         * OLD DATA SUPPORT
+         *
+         * currentQty -> remainingBalance
+         */
+
+        materials =
+            materials.map(item => {
+
+
+                if (
+                    item.remainingBalance === undefined
+                    &&
+                    item.currentQty !== undefined
+                ) {
+
+                    item.remainingBalance =
+                        Number(item.currentQty) || 0;
+
+                }
+
+
+                /*
+                 * Old data may have fullValue.
+                 * New version uses unitPrice.
+                 */
+
+                if (
+                    item.unitPrice === undefined
+                ) {
+
+                    item.unitPrice = 0;
+
+                }
+
+
+                return item;
+
+            });
+
+
+    } catch (error) {
 
         materials = [];
 
     }
 
+
     renderMaterials();
+
 }
 
 
-/* ==========================================
-   SAVE DATA
-========================================== */
+/* =====================================================
+   STORAGE
+===================================================== */
 
 function saveToStorage() {
 
@@ -817,77 +1123,97 @@ function saveToStorage() {
 }
 
 
-/* ==========================================
+/* =====================================================
    ADMIN LOGIN
-========================================== */
+===================================================== */
 
 function openAdminPanel() {
 
     const password =
-        prompt("Enter Admin Password:");
+        prompt(
+            "Enter Admin Password:"
+        );
+
 
     if (password === null) {
         return;
     }
 
-    if (password === ADMIN_PASSWORD) {
+
+    if (
+        password === ADMIN_PASSWORD
+    ) {
 
         document
             .getElementById("adminPanel")
-            .style.display = "block";
+            .style.display =
+            "block";
+
 
         document
             .body
             .classList
             .add("admin-logged-in");
 
+
         window.scrollTo({
+
             top: 0,
+
             behavior: "smooth"
+
         });
+
 
     } else {
 
-        alert("❌ Incorrect Admin Password!");
+        alert(
+            "❌ Incorrect Admin Password!"
+        );
 
     }
 
 }
 
 
-/* ==========================================
-   LOGOUT
-========================================== */
+/* =====================================================
+   ADMIN LOGOUT
+===================================================== */
 
 function logoutAdmin() {
 
     document
         .getElementById("adminPanel")
-        .style.display = "none";
+        .style.display =
+        "none";
+
 
     document
         .body
         .classList
         .remove("admin-logged-in");
 
+
     cancelEdit();
 
 }
 
 
-/* ==========================================
-   SAVE / UPDATE MATERIAL
-========================================== */
+/* =====================================================
+   SAVE MATERIAL
+===================================================== */
 
 function saveMaterial(event) {
 
     event.preventDefault();
+
 
     const name =
         document
             .getElementById("matName")
             .value
             .trim();
+
 
     const maxQty =
         Number(
@@ -896,12 +1222,14 @@ function saveMaterial(event) {
                 .value
         );
 
-    const currentQty =
+
+    const remainingBalance =
         Number(
             document
-                .getElementById("currentQty")
+                .getElementById("remainingBalance")
                 .value
         );
+
 
     const unit =
         document
@@ -909,12 +1237,14 @@ function saveMaterial(event) {
             .value
             .trim();
 
-    const fullValue =
+
+    const unitPrice =
         Number(
             document
-                .getElementById("fullValue")
+                .getElementById("unitPrice")
                 .value
         );
+
 
     const isBlue =
         document
@@ -922,43 +1252,65 @@ function saveMaterial(event) {
             .value === "true";
 
 
-    /* Validation */
+    /* =========================
+       VALIDATION
+    ========================= */
 
     if (!name) {
 
-        alert("Please enter material name.");
-        return;
+        alert(
+            "Please enter material name."
+        );
 
+        return;
     }
+
 
     if (maxQty <= 0) {
 
-        alert("Maximum quantity must be greater than 0.");
-        return;
+        alert(
+            "Total Kg must be greater than 0."
+        );
 
+        return;
     }
 
-    if (currentQty < 0) {
 
-        alert("Current stock cannot be negative.");
+    if (remainingBalance < 0) {
+
+        alert(
+            "Remaining Balance cannot be negative."
+        );
+
         return;
-
     }
 
-    if (currentQty > maxQty) {
 
-        alert("Current stock cannot be greater than maximum capacity.");
+    if (
+        remainingBalance > maxQty
+    ) {
+
+        alert(
+            "Remaining Balance cannot be greater than Total Kg."
+        );
+
         return;
-
     }
 
-    if (fullValue < 0) {
 
-        alert("Budget value cannot be negative.");
+    if (unitPrice < 0) {
+
+        alert(
+            "Unit Price cannot be negative."
+        );
+
         return;
-
     }
 
+
+    /* =========================
+       MATERIAL OBJECT
+    ========================= */
 
     const material = {
 
@@ -966,34 +1318,53 @@ function saveMaterial(event) {
 
         maxQty: maxQty,
 
-        currentQty: currentQty,
+        remainingBalance:
+            remainingBalance,
 
         unit: unit,
 
-        fullValue: fullValue,
+        unitPrice:
+            unitPrice,
 
-        isBlue: isBlue
+        isBlue:
+            isBlue
 
     };
 
 
-    /* UPDATE */
+    /* =========================
+       UPDATE
+    ========================= */
 
-    if (editingIndex !== -1) {
+    if (
+        editingIndex !== -1
+    ) {
 
-        materials[editingIndex] = material;
+        materials[editingIndex] =
+            material;
 
-        alert("✅ Material updated successfully.");
+
+        alert(
+            "✅ Material updated successfully."
+        );
 
     }
 
-    /* ADD */
+
+    /* =========================
+       ADD NEW
+    ========================= */
 
     else {
 
-        materials.push(material);
+        materials.push(
+            material
+        );
 
-        alert("✅ Material added successfully.");
+
+        alert(
+            "✅ Material added successfully."
+        );
 
     }
 
@@ -1007,27 +1378,45 @@ function saveMaterial(event) {
 }
 
 
-/* ==========================================
+/* =====================================================
    RENDER MATERIALS
-========================================== */
+===================================================== */
 
 function renderMaterials() {
 
     const container =
-        document.getElementById("materials-list");
+        document.getElementById(
+            "materials-list"
+        );
+
 
     container.innerHTML = "";
 
 
-    if (materials.length === 0) {
+    /* =========================
+       EMPTY
+    ========================= */
+
+    if (
+        materials.length === 0
+    ) {
 
         container.innerHTML = `
+
             <div class="empty-message">
+
                 No raw materials added yet.
-                <br>
-                Login to Admin Panel to add materials.
+
+                <br><br>
+
+                Click
+                <strong>Admin Panel Access</strong>
+                to add materials.
+
             </div>
+
         `;
+
 
         updateMetrics();
 
@@ -1036,26 +1425,70 @@ function renderMaterials() {
     }
 
 
-    materials.forEach((material, index) => {
+    /* =========================
+       LOOP
+    ========================= */
+
+    materials.forEach(
+        (material, index) => {
+
+
+        const totalKg =
+            Number(
+                material.maxQty
+            ) || 0;
+
+
+        const remaining =
+            Number(
+                material.remainingBalance
+            ) || 0;
+
+
+        const unitPrice =
+            Number(
+                material.unitPrice
+            ) || 0;
+
+
+        /*
+         * TOTAL VALUE
+         *
+         * Remaining Balance
+         * ×
+         * Unit Price
+         */
+
+        const totalValue =
+            remaining * unitPrice;
+
+
+        /*
+         * BALANCE %
+         */
 
         let percentage =
-            (material.currentQty / material.maxQty) * 100;
+            totalKg > 0
+                ? (
+                    remaining /
+                    totalKg
+                ) * 100
+                : 0;
+
 
         percentage =
             Math.max(
                 0,
-                Math.min(100, percentage)
+                Math.min(
+                    100,
+                    percentage
+                )
             );
 
 
-        /* Current financial value */
-
-        const currentValue =
-            material.fullValue *
-            (percentage / 100);
-
-
-        /* Color */
+        /* =========================
+           PROGRESS COLOR
+        ========================= */
 
         let progressClass =
             "bg-green";
@@ -1064,17 +1497,31 @@ function renderMaterials() {
             "good-stock-text";
 
 
-        if (percentage < 20) {
+        if (
+            percentage < 20
+        ) {
 
-            progressClass = "bg-red";
-            stockClass = "low-stock-text";
+            progressClass =
+                "bg-red";
 
-        } else if (percentage < 40) {
-
-            progressClass = "bg-yellow";
+            stockClass =
+                "low-stock-text";
 
         }
 
+        else if (
+            percentage < 40
+        ) {
+
+            progressClass =
+                "bg-yellow";
+
+        }
+
+
+        /* =========================
+           BLUE NAME
+        ========================= */
 
         const blueClass =
             material.isBlue
@@ -1082,8 +1529,15 @@ function renderMaterials() {
                 : "";
 
 
+        /* =========================
+           ROW
+        ========================= */
+
         const row =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         row.className =
             "material-row";
@@ -1091,29 +1545,47 @@ function renderMaterials() {
 
         row.innerHTML = `
 
+            <!-- MATERIAL -->
+
             <div class="info-col">
 
-                <div class="material-name ${blueClass}">
-                    ${escapeHTML(material.name)}
+                <div
+                    class="material-name ${blueClass}">
+
+                    ${escapeHTML(
+                        material.name
+                    )}
+
                 </div>
 
                 <div class="material-val">
+
                     Total:
-                    ${formatNumber(material.maxQty)}
-                    ${escapeHTML(material.unit)}
-                    (${formatTon(material.maxQty)} TON)
+                    ${formatNumber(
+                        totalKg
+                    )}
+                    ${escapeHTML(
+                        material.unit
+                    )}
+
                 </div>
 
             </div>
 
 
+            <!-- BALANCE BAR -->
+
             <div>
 
-                <div class="progress-wrapper">
+                <div
+                    class="progress-wrapper">
 
                     <div
                         class="progress-bar ${progressClass}"
-                        style="width:${percentage}%;">
+                        style="
+                            width:${percentage}%;
+                        ">
+
                     </div>
 
                 </div>
@@ -1121,34 +1593,95 @@ function renderMaterials() {
             </div>
 
 
+            <!-- REMAINING BALANCE -->
+
             <div class="qty-col">
 
-                <span class="${stockClass}">
-                    ${formatNumber(material.currentQty)}
-                    ${escapeHTML(material.unit)}
+                <span
+                    class="${stockClass}">
+
+                    ${formatNumber(
+                        remaining
+                    )}
+                    ${escapeHTML(
+                        material.unit
+                    )}
+
                 </span>
 
                 <span class="usd-live-val">
+
                     ${percentage.toFixed(1)}%
-                    &nbsp; | &nbsp;
-                    $${formatMoney(currentValue)}
+                    remaining
+
                 </span>
 
             </div>
 
 
+            <!-- UNIT PRICE -->
+
+            <div class="unit-price-col">
+
+                $${formatMoney(
+                    unitPrice
+                )}
+
+                <span class="price-label">
+
+                    per
+                    ${escapeHTML(
+                        material.unit
+                    )}
+
+                </span>
+
+            </div>
+
+
+            <!-- TOTAL VALUE -->
+
+            <div class="total-value-col">
+
+                $${formatMoney(
+                    totalValue
+                )}
+
+                <span class="price-label">
+
+                    ${formatNumber(
+                        remaining
+                    )}
+                    ×
+                    $${formatMoney(
+                        unitPrice
+                    )}
+
+                </span>
+
+            </div>
+
+
+            <!-- ACTION -->
+
             <div class="action-col">
 
                 <button
+                    type="button"
                     class="btn btn-edit"
                     onclick="editMaterial(${index})">
+
                     Edit
+
                 </button>
 
                 <button
+                    type="button"
                     class="btn btn-red"
                     onclick="deleteMaterial(${index})">
+
                     Delete
+
                 </button>
 
             </div>
@@ -1156,7 +1689,9 @@ function renderMaterials() {
         `;
 
 
-        container.appendChild(row);
+        container.appendChild(
+            row
+        );
 
     });
 
@@ -1166,38 +1701,98 @@ function renderMaterials() {
 }
 
 
-/* ==========================================
-   UPDATE METRICS
-========================================== */
+/* =====================================================
+   UPDATE FOOTER
+===================================================== */
 
 function updateMetrics() {
 
+    /*
+     * IMPORTANT:
+     *
+     * TOTAL KG
+     * =
+     * ALL REMAINING BALANCE
+     *
+     * NOT Total Kg / Capacity
+     */
+
+    let totalKg = 0;
+
+
+    /*
+     * TOTAL VALUE
+     *
+     * Remaining Balance × Unit Price
+     */
+
     let totalValue = 0;
 
-    let currentAssetValue = 0;
+
+    /*
+     * LOW BALANCE COUNT
+     */
 
     let lowBalanceCount = 0;
 
 
-    materials.forEach(material => {
+    materials.forEach(
+        material => {
+
+
+        const maxQty =
+            Number(
+                material.maxQty
+            ) || 0;
+
+
+        const remaining =
+            Number(
+                material.remainingBalance
+            ) || 0;
+
+
+        const unitPrice =
+            Number(
+                material.unitPrice
+            ) || 0;
+
+
+        /* =============================================
+           Remaining Raw Material Volume
+           
+           ONLY REMAINING BALANCE IS ADDED
+        ============================================= */
+
+        totalKg += remaining;
+
+
+        /* =============================================
+           TOTAL VALUE
+           
+           Remaining Balance × Unit Price
+        ============================================= */
 
         totalValue +=
-            Number(material.fullValue);
+            remaining * unitPrice;
 
+
+        /* =============================================
+           LOW BALANCE
+        ============================================= */
 
         const percentage =
-            material.maxQty > 0
-                ? material.currentQty /
-                  material.maxQty
+            maxQty > 0
+                ? (
+                    remaining /
+                    maxQty
+                ) * 100
                 : 0;
 
 
-        currentAssetValue +=
-            material.fullValue *
-            percentage;
-
-
-        if (percentage < 0.20) {
+        if (
+            percentage < 20
+        ) {
 
             lowBalanceCount++;
 
@@ -1206,27 +1801,48 @@ function updateMetrics() {
     });
 
 
+    /* =================================================
+       TOTAL KG DISPLAY
+    ================================================= */
+
+    document
+        .getElementById("total-kg")
+        .textContent =
+        formatNumber(
+            totalKg
+        ) + " kg";
+
+
+    /* =================================================
+       TOTAL VALUE DISPLAY
+    ================================================= */
+
     document
         .getElementById("total-value")
         .textContent =
-        "$" + formatMoney(totalValue);
+        "$" +
+        formatMoney(
+            totalValue
+        );
 
 
-    document
-        .getElementById("current-asset-value")
-        .textContent =
-        "$" + formatMoney(currentAssetValue);
-
+    /* =================================================
+       LOW WARNING
+    ================================================= */
 
     const warning =
-        document.getElementById("low-warning");
+        document.getElementById(
+            "low-warning"
+        );
 
 
     warning.textContent =
         lowBalanceCount;
 
 
-    if (lowBalanceCount > 0) {
+    if (
+        lowBalanceCount > 0
+    ) {
 
         warning.className =
             "metric-value text-red";
@@ -1241,39 +1857,45 @@ function updateMetrics() {
 }
 
 
-/* ==========================================
-   EDIT MATERIAL
-========================================== */
+/* =====================================================
+   EDIT
+===================================================== */
 
 function editMaterial(index) {
 
     const material =
         materials[index];
 
+
     document
         .getElementById("matName")
         .value =
         material.name;
+
 
     document
         .getElementById("maxQty")
         .value =
         material.maxQty;
 
+
     document
-        .getElementById("currentQty")
+        .getElementById("remainingBalance")
         .value =
-        material.currentQty;
+        material.remainingBalance;
+
 
     document
         .getElementById("unit")
         .value =
         material.unit;
 
+
     document
-        .getElementById("fullValue")
+        .getElementById("unitPrice")
         .value =
-        material.fullValue;
+        material.unitPrice;
+
 
     document
         .getElementById("isBlue")
@@ -1283,7 +1905,8 @@ function editMaterial(index) {
             : "false";
 
 
-    editingIndex = index;
+    editingIndex =
+        index;
 
 
     document
@@ -1313,16 +1936,19 @@ function editMaterial(index) {
 
 
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
 
 }
 
 
-/* ==========================================
-   DELETE MATERIAL
-========================================== */
+/* =====================================================
+   DELETE
+===================================================== */
 
 function deleteMaterial(index) {
 
@@ -1341,21 +1967,27 @@ function deleteMaterial(index) {
     }
 
 
-    materials.splice(index, 1);
+    materials.splice(
+        index,
+        1
+    );
+
 
     saveToStorage();
 
     renderMaterials();
 
 
-    alert("🗑️ Material deleted.");
+    alert(
+        "🗑️ Material deleted successfully."
+    );
 
 }
 
 
-/* ==========================================
+/* =====================================================
    CANCEL EDIT
-========================================== */
+===================================================== */
 
 function cancelEdit() {
 
@@ -1366,9 +1998,9 @@ function cancelEdit() {
 }
 
 
-/* ==========================================
+/* =====================================================
    RESET FORM
-========================================== */
+===================================================== */
 
 function resetForm() {
 
@@ -1386,7 +2018,7 @@ function resetForm() {
     document
         .getElementById("saveButton")
         .textContent =
-        "Save & Update Stock";
+        "Save Material";
 
 
     document
@@ -1401,75 +2033,80 @@ function resetForm() {
 }
 
 
-/* ==========================================
-   FORMAT NUMBER
-========================================== */
+/* =====================================================
+   NUMBER FORMAT
+===================================================== */
 
 function formatNumber(number) {
 
-    return Number(number).toLocaleString(
-        "en-US",
-        {
-            maximumFractionDigits: 2
-        }
-    );
+    return Number(number)
+        .toLocaleString(
+            "en-US",
+            {
+                maximumFractionDigits: 2
+            }
+        );
 
 }
 
 
-/* ==========================================
-   FORMAT MONEY
-========================================== */
+/* =====================================================
+   MONEY FORMAT
+===================================================== */
 
 function formatMoney(number) {
 
-    return Number(number).toLocaleString(
-        "en-US",
-        {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 2
-        }
-    );
+    return Number(number)
+        .toLocaleString(
+            "en-US",
+            {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }
+        );
 
 }
 
 
-/* ==========================================
-   FORMAT TON
-========================================== */
-
-function formatTon(kg) {
-
-    return Number(kg / 1000).toLocaleString(
-        "en-US",
-        {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 2
-        }
-    );
-
-}
-
-
-/* ==========================================
-   SECURITY / HTML ESCAPE
-========================================== */
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
 
 function escapeHTML(value) {
 
     return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
-/* ==========================================
-   START APP
-========================================== */
+/* =====================================================
+   START
+===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
