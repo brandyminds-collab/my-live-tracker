@@ -63,7 +63,7 @@
 
         .material-row {
             display: grid;
-            grid-template-columns: 200px 1fr 120px;
+            grid-template-columns: 200px 1fr 180px; /* ডানপাশের কলাম একটু বড় করা হয়েছে USD এর জন্য */
             align-items: center;
             gap: 20px;
             margin-bottom: 25px;
@@ -111,16 +111,28 @@
         .qty-col {
             text-align: right;
             font-weight: bold;
-            font-size: 15px;
+            font-size: 14px;
             transition: color 0.3s;
+            line-height: 1.4;
+        }
+
+        .usd-live-val {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: normal;
+            display: block; /* পরিমাণ বা Kg এর নিচে ছোট করে লাইভ ডলার দেখাবে */
+        }
+        
+        .text-red .usd-live-val {
+            color: #ff8a80; /* স্টক লাল হলে ডলারের টেক্সটও হালকা লালচে দেখাবে */
         }
 
         /* Axis Labels */
         .axis-labels {
             display: grid;
-            grid-template-columns: 200px 1fr 120px;
+            grid-template-columns: 200px 1fr 180px;
             margin-bottom: 30px;
-            padding-right: 120px;
+            padding-right: 180px;
         }
         .labels-flex {
             grid-column: 2;
@@ -207,7 +219,7 @@
 </div>
 
 <script>
-    // ইমেজে থাকা ডেটার অবজেক্ট স্ট্রাকচার
+    // ডেটা স্ট্রাকচার
     const materialsData = [
         { id: 1, name: 'Premium Cotton Yarn', maxQty: 10000, currentQty: 4200, unit: 'Kg', fullValue: 25000, isBlue: false },
         { id: 2, name: 'Polyester Fabric Mesh', maxQty: 10000, currentQty: 6100, unit: 'Yards', fullValue: 19000, isBlue: false },
@@ -225,8 +237,7 @@
         let lowWarningCount = 0;
 
         materialsData.forEach(mat => {
-            // লাইভ সার্ভার ফিল দিতে র্যান্ডম ডেটা পরিবর্তন (ঐচ্ছিক)
-            // স্টক কিছুটা কম-বেশি করার জন্য নিচের ২টি লাইন ব্যবহার করা হয়েছে
+            // লাইভ ডেমো আপডেট
             const change = Math.floor(Math.random() * 200) - 100; 
             mat.currentQty = Math.max(100, Math.min(mat.maxQty, mat.currentQty + change));
 
@@ -236,7 +247,6 @@
             totalValueSum += mat.fullValue;
             currentAssetValueSum += currentValue;
 
-            // ৩০% এর নিচে নামলে লাল ওয়ার্নিং বার আসবে
             const isLow = percentage < 30;
             if (isLow) lowWarningCount++;
 
@@ -244,7 +254,7 @@
             const textColorClass = isLow ? 'text-red' : '';
             const nameBlueClass = mat.isBlue ? 'highlight-blue' : '';
 
-            // রো জেনারেট করা
+            // রো জেনারেট করা (এখানে Kg/Yards এর নিচে লাইভ USD ভ্যালু যুক্ত করা হয়েছে)
             const rowHtml = `
                 <div class="material-row">
                     <div class="info-col">
@@ -256,21 +266,21 @@
                     </div>
                     <div class="qty-col ${textColorClass}">
                         ${mat.currentQty.toLocaleString()} ${mat.unit}
+                        <span class="usd-live-val">($${Math.round(currentValue).toLocaleString()} USD)</span>
                     </div>
                 </div>
             `;
             container.innerHTML += rowHtml;
         });
 
-        // নিচের টোটাল হিসাব আপডেট করা
+        // ফুটার আপডেট
         document.getElementById('total-value').innerText = `$${totalValueSum.toLocaleString()}`;
         document.getElementById('current-asset-value').innerText = `$${Math.round(currentAssetValueSum).toLocaleString()}`;
         document.getElementById('low-warning-count').innerText = `${lowWarningCount} ${lowWarningCount === 1 ? 'material' : 'materials'}`;
     }
 
-    // প্রথমবার লোড হওয়া
     updateDashboard();
-
+    setInterval(updateDashboard, 3000);
 </script>
 
 </body>
