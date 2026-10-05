@@ -7,6 +7,7 @@
 <title>Seven Classic Ind. Ltd. - Material Balance Tracker</title>
 
 <style>
+
 :root {
     --bg-color: #1a1d24;
     --card-bg: #13161c;
@@ -26,7 +27,7 @@
 
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--bg-color);
+    background-color: var(--bg-color);
     color: var(--text-main);
     margin: 0;
     padding: 30px 20px;
@@ -44,7 +45,7 @@ body {
 ========================= */
 
 .admin-panel {
-    background: var(--admin-bg);
+    background-color: var(--admin-bg);
     border: 2px dashed var(--blue);
     border-radius: 8px;
     padding: 25px;
@@ -93,9 +94,9 @@ body {
 .form-group input,
 .form-group select {
     width: 100%;
-    background: var(--card-bg);
+    background-color: var(--card-bg);
     border: 1px solid var(--border);
-    color: white;
+    color: #fff;
     padding: 10px;
     border-radius: 5px;
     font-size: 14px;
@@ -117,32 +118,32 @@ body {
 }
 
 .btn-blue {
-    background: var(--blue);
-    color: white;
+    background-color: var(--blue);
+    color: #fff;
 }
 
 .btn-blue:hover {
-    background: #2584c2;
+    background-color: #2584c2;
 }
 
 .btn-red {
-    background: var(--red);
-    color: white;
+    background-color: var(--red);
+    color: #fff;
     padding: 5px 9px;
     font-size: 12px;
 }
 
 .btn-edit {
-    background: #f39c12;
-    color: white;
+    background-color: #f39c12;
+    color: #fff;
     padding: 5px 9px;
     font-size: 12px;
     margin-right: 5px;
 }
 
 .btn-logout {
-    background: #555;
-    color: white;
+    background-color: #555;
+    color: #fff;
     font-size: 12px;
     padding: 7px 12px;
 }
@@ -152,7 +153,7 @@ body {
 ========================= */
 
 .dashboard {
-    background: var(--card-bg);
+    background-color: var(--card-bg);
     border-radius: 8px;
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -173,7 +174,7 @@ body {
 
 .title {
     font-size: 22px;
-    margin: 6px 0 0;
+    margin: 6px 0 0 0;
     font-weight: 600;
 }
 
@@ -183,16 +184,18 @@ body {
 
 .table-title-row,
 .material-row {
+
     display: grid;
 
     /*
-      Material
-      Progress
-      Remaining
-      Unit Price
-      Total Value
-      Action
+        Material
+        Progress
+        Remaining
+        Unit Price
+        Total Value
+        Action
     */
+
     grid-template-columns:
         190px
         1fr
@@ -202,105 +205,148 @@ body {
         95px;
 
     gap: 15px;
+
     align-items: center;
 }
 
 .table-title-row {
+
     margin-bottom: 18px;
+
     padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
+
+    border-bottom:
+        1px solid var(--border);
 }
 
 .table-title-text {
+
     font-size: 11px;
+
     color: var(--text-muted);
+
     font-weight: bold;
+
     text-transform: uppercase;
 }
 
 .materials-container {
+
     margin-bottom: 30px;
+
     min-height: 30px;
 }
 
 .material-row {
+
     margin-bottom: 25px;
 }
 
 .info-col {
+
     display: flex;
+
     flex-direction: column;
 }
 
 .material-name {
+
     font-size: 16px;
+
     font-weight: bold;
+
     text-transform: uppercase;
 }
 
 .material-name.highlight-blue {
+
     color: var(--blue);
 }
 
 .material-val {
+
     font-size: 12px;
+
     color: var(--text-muted);
+
     margin-top: 4px;
 }
 
 /* =========================
-   PROGRESS
+   PROGRESS BAR
 ========================= */
 
 .progress-wrapper {
-    background: #1a1e26;
+
+    background-color: #1a1e26;
+
     border-radius: 20px;
+
     height: 14px;
+
     width: 100%;
+
     overflow: hidden;
 }
 
 .progress-bar {
+
     height: 100%;
+
     border-radius: 20px;
-    transition: width 0.5s ease;
+
+    transition:
+        width 0.5s ease;
 }
 
 .bg-green {
-    background: var(--green);
+
+    background-color: var(--green);
 }
 
 .bg-red {
-    background: var(--red);
+
+    background-color: var(--red);
 }
 
 .bg-yellow {
-    background: var(--yellow);
+
+    background-color: var(--yellow);
 }
 
 /* =========================
-   REMAINING
+   REMAINING BALANCE
 ========================= */
 
 .qty-col {
+
     text-align: right;
+
     font-weight: bold;
+
     font-size: 14px;
+
     line-height: 1.4;
 }
 
 .usd-live-val {
+
     font-size: 11px;
+
     color: var(--text-muted);
+
     font-weight: normal;
+
     display: block;
 }
 
 .low-stock-text {
+
     color: var(--red);
 }
 
 .good-stock-text {
+
     color: var(--green);
 }
 
@@ -309,25 +355,42 @@ body {
 ========================= */
 
 .unit-price-col {
+
     text-align: right;
+
     font-size: 14px;
+
     font-weight: bold;
+
     color: #d7dbe5;
 }
 
-.total-value-col {
-    text-align: right;
-    font-size: 14px;
-    font-weight: bold;
-    color: var(--green);
+.price-label {
+
+    display: block;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+
+    font-weight: normal;
+
+    margin-top: 3px;
 }
 
-.price-label {
-    display: block;
-    color: var(--text-muted);
-    font-size: 10px;
-    font-weight: normal;
-    margin-top: 3px;
+/* =========================
+   TOTAL VALUE
+========================= */
+
+.total-value-col {
+
+    text-align: right;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: var(--green);
 }
 
 /* =========================
@@ -335,6 +398,7 @@ body {
 ========================= */
 
 .axis-labels {
+
     display: grid;
 
     grid-template-columns:
@@ -346,55 +410,80 @@ body {
         95px;
 
     gap: 15px;
+
     margin-bottom: 30px;
 }
 
 .labels-flex {
+
     grid-column: 2;
+
     display: flex;
+
     justify-content: space-between;
+
     color: var(--text-muted);
+
     font-size: 12px;
+
     padding: 0 5px;
 }
 
 /* =========================
-   FOOTER
+   FOOTER METRICS
 ========================= */
 
 .footer-metrics {
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid var(--border);
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    border-top:
+        1px solid var(--border);
+
     padding-top: 25px;
+
     text-align: center;
 }
 
 .metric-box {
-    border-right: 1px solid var(--border);
+
+    border-right:
+        1px solid var(--border);
 }
 
 .metric-box:last-child {
+
     border-right: none;
 }
 
 .metric-label {
+
     font-size: 12px;
+
     color: var(--text-muted);
+
     text-transform: uppercase;
+
     margin-bottom: 8px;
 }
 
 .metric-value {
+
     font-size: 24px;
+
     font-weight: bold;
 }
 
 .text-green {
+
     color: var(--green);
 }
 
 .text-red {
+
     color: var(--red);
 }
 
@@ -403,54 +492,85 @@ body {
 ========================= */
 
 .admin-trigger-zone {
+
     text-align: center;
+
     margin-top: 30px;
+
     padding-bottom: 20px;
 }
 
 .login-btn {
-    background: #242933;
-    border: 1px solid var(--border);
+
+    background-color: #242933;
+
+    border:
+        1px solid var(--border);
+
     color: #d1d5db;
+
     font-size: 14px;
+
     padding: 12px 28px;
+
     border-radius: 6px;
+
     cursor: pointer;
+
     font-weight: bold;
 
     display: inline-flex;
+
     align-items: center;
+
     gap: 8px;
 
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition:
+        all 0.2s ease;
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,0.3);
 }
 
 .login-btn:hover {
-    background: var(--blue);
-    color: white;
+
+    background-color: var(--blue);
+
+    color: #fff;
+
     border-color: var(--blue);
-    transform: translateY(-2px);
+
+    transform:
+        translateY(-2px);
 }
 
 .action-col {
+
     display: none;
+
     text-align: center;
 }
 
 body.admin-logged-in .action-col {
+
     display: block;
 }
 
 /* =========================
-   EMPTY
+   EMPTY MESSAGE
 ========================= */
 
 .empty-message {
+
     text-align: center;
+
     color: var(--text-muted);
+
     padding: 40px 10px;
-    border: 1px dashed var(--border);
+
+    border:
+        1px dashed var(--border);
+
     border-radius: 6px;
 }
 
@@ -461,41 +581,56 @@ body.admin-logged-in .action-col {
 @media (max-width: 950px) {
 
     .dashboard {
+
         padding: 20px 15px;
     }
 
     .table-title-row {
+
         display: none;
     }
 
     .material-row {
+
         display: grid;
-        grid-template-columns: 1fr 1fr;
+
+        grid-template-columns:
+            1fr 1fr;
+
         gap: 12px;
 
         padding: 18px 0;
-        border-bottom: 1px solid var(--border);
+
+        border-bottom:
+            1px solid var(--border);
     }
 
     .info-col {
-        grid-column: 1 / -1;
+
+        grid-column:
+            1 / -1;
     }
 
     .progress-wrapper {
-        grid-column: 1 / -1;
+
+        grid-column:
+            1 / -1;
     }
 
     .qty-col,
     .unit-price-col,
     .total-value-col {
+
         text-align: left;
     }
 
     .action-col {
+
         text-align: left;
     }
 
     .axis-labels {
+
         display: none;
     }
 }
@@ -503,38 +638,51 @@ body.admin-logged-in .action-col {
 @media (max-width: 650px) {
 
     body {
+
         padding: 15px;
     }
 
     .form-grid {
+
         grid-template-columns: 1fr;
     }
 
     .admin-title {
+
         flex-direction: column;
+
         align-items: flex-start;
     }
 
     .footer-metrics {
+
         grid-template-columns: 1fr;
+
         gap: 20px;
     }
 
     .metric-box {
+
         border-right: none;
-        border-bottom: 1px solid var(--border);
+
+        border-bottom:
+            1px solid var(--border);
+
         padding-bottom: 15px;
     }
 
     .metric-box:last-child {
+
         border-bottom: none;
     }
 
     .title {
+
         font-size: 19px;
     }
 
     .material-row {
+
         grid-template-columns: 1fr;
     }
 
@@ -542,9 +690,11 @@ body.admin-logged-in .action-col {
     .unit-price-col,
     .total-value-col,
     .action-col {
+
         text-align: left;
     }
 }
+
 </style>
 </head>
 
@@ -552,37 +702,53 @@ body.admin-logged-in .action-col {
 
 <div class="container">
 
-<!-- =========================
-     ADMIN PANEL
-========================= -->
 
-<div class="admin-panel" id="adminPanel">
+<!-- =====================================================
+     ADMIN PANEL
+===================================================== -->
+
+<div
+    class="admin-panel"
+    id="adminPanel">
 
     <div class="admin-title">
 
         <div>
+
             Raw Materials Entry Form
+
             <span class="admin-status">
                 ● Admin Mode
             </span>
+
         </div>
 
         <button
             class="btn btn-logout"
             onclick="logoutAdmin()">
+
             Close Admin Panel
+
         </button>
 
     </div>
 
 
-    <form id="materialForm" onsubmit="saveMaterial(event)">
+    <form
+        id="materialForm"
+        onsubmit="saveMaterial(event)">
+
 
         <div class="form-grid">
 
+
+            <!-- MATERIAL NAME -->
+
             <div class="form-group">
 
-                <label>Material Name</label>
+                <label>
+                    Material Name
+                </label>
 
                 <input
                     type="text"
@@ -593,9 +759,13 @@ body.admin-logged-in .action-col {
             </div>
 
 
+            <!-- TOTAL KG -->
+
             <div class="form-group">
 
-                <label>Maximum Qty / Total Kg</label>
+                <label>
+                    Total Kg / Maximum Qty
+                </label>
 
                 <input
                     type="number"
@@ -608,9 +778,13 @@ body.admin-logged-in .action-col {
             </div>
 
 
+            <!-- REMAINING BALANCE -->
+
             <div class="form-group">
 
-                <label>Remaining Balance</label>
+                <label>
+                    Remaining Balance
+                </label>
 
                 <input
                     type="number"
@@ -623,9 +797,13 @@ body.admin-logged-in .action-col {
             </div>
 
 
+            <!-- UNIT -->
+
             <div class="form-group">
 
-                <label>Unit</label>
+                <label>
+                    Unit
+                </label>
 
                 <input
                     type="text"
@@ -636,9 +814,13 @@ body.admin-logged-in .action-col {
             </div>
 
 
+            <!-- UNIT PRICE -->
+
             <div class="form-group">
 
-                <label>Unit Price ($)</label>
+                <label>
+                    Unit Price ($)
+                </label>
 
                 <input
                     type="number"
@@ -651,9 +833,13 @@ body.admin-logged-in .action-col {
             </div>
 
 
+            <!-- BLUE -->
+
             <div class="form-group">
 
-                <label>Highlight Blue?</label>
+                <label>
+                    Highlight Blue?
+                </label>
 
                 <select id="isBlue">
 
@@ -676,7 +862,9 @@ body.admin-logged-in .action-col {
             type="submit"
             class="btn btn-blue"
             id="saveButton">
+
             Save Material
+
         </button>
 
 
@@ -686,7 +874,9 @@ body.admin-logged-in .action-col {
             id="cancelEditButton"
             onclick="cancelEdit()"
             style="display:none;">
+
             Cancel Edit
+
         </button>
 
     </form>
@@ -694,143 +884,206 @@ body.admin-logged-in .action-col {
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      DASHBOARD
-========================= -->
+===================================================== -->
 
 <div class="dashboard">
+
 
     <div class="header">
 
         <div class="company-name">
+
             Seven Classic Ind. Ltd.
+
         </div>
 
         <div class="title">
+
             Live Raw Material Balance Tracker
+
         </div>
 
     </div>
 
 
-    <!-- TABLE HEADER -->
+    <!-- =================================================
+         TABLE HEADER
+    ================================================= -->
 
     <div class="table-title-row">
 
+
         <div class="table-title-text">
+
             Raw Materials
+
         </div>
+
 
         <div class="table-title-text">
+
             Balance Level
+
         </div>
+
 
         <div
             class="table-title-text"
             style="text-align:right;">
+
             Remaining Balance
+
         </div>
+
 
         <div
             class="table-title-text"
             style="text-align:right;">
+
             Unit Price
+
         </div>
+
 
         <div
             class="table-title-text"
             style="text-align:right;">
+
             Total Value
+
         </div>
+
 
         <div class="table-title-text action-col">
+
             Action
+
         </div>
 
     </div>
 
 
-    <!-- MATERIALS -->
+    <!-- =================================================
+         MATERIAL LIST
+    ================================================= -->
 
     <div
         class="materials-container"
         id="materials-list">
 
         <div class="empty-message">
+
             No raw materials added yet.
+
             <br>
+
             Login to Admin Panel to add materials.
+
         </div>
 
     </div>
 
 
-    <!-- AXIS -->
+    <!-- =================================================
+         PROGRESS AXIS
+    ================================================= -->
 
     <div class="axis-labels">
 
         <div></div>
 
         <div class="labels-flex">
+
             <span>20%</span>
+
             <span>40%</span>
+
             <span>60%</span>
+
             <span>80%</span>
+
             <span>100%</span>
+
         </div>
 
         <div></div>
+
         <div></div>
+
         <div></div>
+
         <div></div>
 
     </div>
 
 
-    <!-- FOOTER -->
+    <!-- =================================================
+         FOOTER
+    ================================================= -->
 
     <div class="footer-metrics">
+
+
+        <!-- TOTAL KG -->
 
         <div class="metric-box">
 
             <div class="metric-label">
-                Total Value
+
+                Total Kg
+
             </div>
 
             <div
                 class="metric-value"
-                id="total-value">
-                $0
+                id="total-kg">
+
+                0 kg
+
             </div>
 
         </div>
 
 
+        <!-- TOTAL VALUE -->
+
         <div class="metric-box">
 
             <div class="metric-label">
-                Current Asset Value
+
+                Total Value
+
             </div>
 
             <div
                 class="metric-value text-green"
-                id="current-asset-value">
-                $0
+                id="total-value">
+
+                $0.00
+
             </div>
 
         </div>
 
 
+        <!-- LOW BALANCE -->
+
         <div class="metric-box">
 
             <div class="metric-label">
+
                 Low Balance Warning
+
             </div>
 
             <div
                 class="metric-value"
                 id="low-warning">
+
                 0
+
             </div>
 
         </div>
@@ -840,7 +1093,9 @@ body.admin-logged-in .action-col {
 </div>
 
 
-<!-- ADMIN ACCESS -->
+<!-- =====================================================
+     ADMIN ACCESS BUTTON
+===================================================== -->
 
 <div class="admin-trigger-zone">
 
@@ -854,67 +1109,85 @@ body.admin-logged-in .action-col {
 
 </div>
 
+
 </div>
 
 
 <script>
 
-/* ==========================================
+/* =====================================================
    SETTINGS
-========================================== */
+===================================================== */
 
 const ADMIN_PASSWORD = "admin123";
 
-const STORAGE_KEY = "sevenClassicMaterials";
+const STORAGE_KEY =
+    "sevenClassicMaterials";
 
 let materials = [];
 
 let editingIndex = -1;
 
 
-/* ==========================================
-   LOAD
-========================================== */
+/* =====================================================
+   LOAD MATERIALS
+===================================================== */
 
 function loadMaterials() {
 
     const savedData =
         localStorage.getItem(STORAGE_KEY);
 
+
     if (savedData) {
 
         try {
 
-            materials = JSON.parse(savedData);
+            materials =
+                JSON.parse(savedData);
+
 
             /*
-             * Old version compatibility:
-             * currentQty -> remainingBalance
+             * OLD VERSION SUPPORT
+             *
+             * currentQty
+             * ->
+             * remainingBalance
              */
 
-            materials = materials.map(item => {
+            materials =
+                materials.map(item => {
 
-                if (
-                    item.remainingBalance === undefined &&
-                    item.currentQty !== undefined
-                ) {
-                    item.remainingBalance =
-                        Number(item.currentQty);
-                }
 
-                /*
-                 * Old version had fullValue.
-                 * We cannot know the old unit price,
-                 * so default it to 0.
-                 */
+                    if (
+                        item.remainingBalance === undefined &&
+                        item.currentQty !== undefined
+                    ) {
 
-                if (item.unitPrice === undefined) {
-                    item.unitPrice = 0;
-                }
+                        item.remainingBalance =
+                            Number(item.currentQty);
 
-                return item;
+                    }
 
-            });
+
+                    /*
+                     * Old version didn't have
+                     * unitPrice.
+                     */
+
+                    if (
+                        item.unitPrice === undefined
+                    ) {
+
+                        item.unitPrice = 0;
+
+                    }
+
+
+                    return item;
+
+                });
+
 
         } catch (error) {
 
@@ -924,13 +1197,15 @@ function loadMaterials() {
 
     }
 
+
     renderMaterials();
+
 }
 
 
-/* ==========================================
-   STORAGE
-========================================== */
+/* =====================================================
+   SAVE TO LOCAL STORAGE
+===================================================== */
 
 function saveToStorage() {
 
@@ -942,47 +1217,65 @@ function saveToStorage() {
 }
 
 
-/* ==========================================
-   LOGIN
-========================================== */
+/* =====================================================
+   OPEN ADMIN
+===================================================== */
 
 function openAdminPanel() {
 
     const password =
-        prompt("Enter Admin Password:");
+        prompt(
+            "Enter Admin Password:"
+        );
+
 
     if (password === null) {
+
         return;
+
     }
 
-    if (password === ADMIN_PASSWORD) {
+
+    if (
+        password === ADMIN_PASSWORD
+    ) {
+
 
         document
             .getElementById("adminPanel")
             .style.display = "block";
+
 
         document
             .body
             .classList
             .add("admin-logged-in");
 
+
         window.scrollTo({
+
             top: 0,
+
             behavior: "smooth"
+
         });
+
 
     } else {
 
-        alert("❌ Incorrect Admin Password!");
+
+        alert(
+            "❌ Incorrect Admin Password!"
+        );
 
     }
 
 }
 
 
-/* ==========================================
-   LOGOUT
-========================================== */
+/* =====================================================
+   CLOSE ADMIN
+===================================================== */
 
 function logoutAdmin() {
 
@@ -990,19 +1283,21 @@ function logoutAdmin() {
         .getElementById("adminPanel")
         .style.display = "none";
 
+
     document
         .body
         .classList
         .remove("admin-logged-in");
+
 
     cancelEdit();
 
 }
 
 
-/* ==========================================
-   SAVE MATERIAL
-========================================== */
+/* =====================================================
+   SAVE / UPDATE MATERIAL
+===================================================== */
 
 function saveMaterial(event) {
 
@@ -1053,11 +1348,16 @@ function saveMaterial(event) {
             .value === "true";
 
 
-    /* Validation */
+    /* =========================
+       VALIDATION
+    ========================= */
 
     if (!name) {
 
-        alert("Please enter material name.");
+        alert(
+            "Please enter material name."
+        );
+
         return;
 
     }
@@ -1065,7 +1365,10 @@ function saveMaterial(event) {
 
     if (maxQty <= 0) {
 
-        alert("Total Kg / Maximum Qty must be greater than 0.");
+        alert(
+            "Total Kg must be greater than 0."
+        );
+
         return;
 
     }
@@ -1073,13 +1376,18 @@ function saveMaterial(event) {
 
     if (remainingBalance < 0) {
 
-        alert("Remaining Balance cannot be negative.");
+        alert(
+            "Remaining Balance cannot be negative."
+        );
+
         return;
 
     }
 
 
-    if (remainingBalance > maxQty) {
+    if (
+        remainingBalance > maxQty
+    ) {
 
         alert(
             "Remaining Balance cannot be greater than Total Kg."
@@ -1092,11 +1400,18 @@ function saveMaterial(event) {
 
     if (unitPrice < 0) {
 
-        alert("Unit Price cannot be negative.");
+        alert(
+            "Unit Price cannot be negative."
+        );
+
         return;
 
     }
 
+
+    /* =========================
+       CREATE MATERIAL
+    ========================= */
 
     const material = {
 
@@ -1104,7 +1419,8 @@ function saveMaterial(event) {
 
         maxQty: maxQty,
 
-        remainingBalance: remainingBalance,
+        remainingBalance:
+            remainingBalance,
 
         unit: unit,
 
@@ -1115,12 +1431,15 @@ function saveMaterial(event) {
     };
 
 
-    /* UPDATE */
+    /* =========================
+       UPDATE
+    ========================= */
 
     if (editingIndex !== -1) {
 
         materials[editingIndex] =
             material;
+
 
         alert(
             "✅ Material updated successfully."
@@ -1128,11 +1447,15 @@ function saveMaterial(event) {
 
     }
 
-    /* ADD */
+
+    /* =========================
+       NEW
+    ========================= */
 
     else {
 
         materials.push(material);
+
 
         alert(
             "✅ Material added successfully."
@@ -1150,28 +1473,41 @@ function saveMaterial(event) {
 }
 
 
-/* ==========================================
-   RENDER
-========================================== */
+/* =====================================================
+   RENDER MATERIALS
+===================================================== */
 
 function renderMaterials() {
 
     const container =
-        document.getElementById("materials-list");
+        document.getElementById(
+            "materials-list"
+        );
 
 
     container.innerHTML = "";
 
 
+    /* =========================
+       EMPTY
+    ========================= */
+
     if (materials.length === 0) {
 
         container.innerHTML = `
+
             <div class="empty-message">
+
                 No raw materials added yet.
+
                 <br>
+
                 Login to Admin Panel to add materials.
+
             </div>
+
         `;
+
 
         updateMetrics();
 
@@ -1180,208 +1516,17 @@ function renderMaterials() {
     }
 
 
-    materials.forEach((material, index) => {
+    /* =========================
+       LOOP
+    ========================= */
+
+    materials.forEach(
+        (material, index) => {
+
 
         const totalKg =
             Number(material.maxQty) || 0;
 
-
-        const remaining =
-            Number(
-                material.remainingBalance
-            ) || 0;
-
-
-        const unitPrice =
-            Number(material.unitPrice) || 0;
-
-
-        /*
-         * MAIN FORMULA
-         *
-         * Total Value =
-         * Remaining Balance × Unit Price
-         */
-
-        const totalValue =
-            remaining * unitPrice;
-
-
-        let percentage =
-            totalKg > 0
-                ? (remaining / totalKg) * 100
-                : 0;
-
-
-        percentage =
-            Math.max(
-                0,
-                Math.min(100, percentage)
-            );
-
-
-        /* Color */
-
-        let progressClass =
-            "bg-green";
-
-        let stockClass =
-            "good-stock-text";
-
-
-        if (percentage < 20) {
-
-            progressClass = "bg-red";
-            stockClass = "low-stock-text";
-
-        }
-        else if (percentage < 40) {
-
-            progressClass = "bg-yellow";
-
-        }
-
-
-        const blueClass =
-            material.isBlue
-                ? "highlight-blue"
-                : "";
-
-
-        const row =
-            document.createElement("div");
-
-
-        row.className =
-            "material-row";
-
-
-        row.innerHTML = `
-
-            <!-- MATERIAL -->
-
-            <div class="info-col">
-
-                <div class="material-name ${blueClass}">
-                    ${escapeHTML(material.name)}
-                </div>
-
-                <div class="material-val">
-                    Total:
-                    ${formatNumber(totalKg)}
-                    ${escapeHTML(material.unit)}
-                </div>
-
-            </div>
-
-
-            <!-- PROGRESS -->
-
-            <div>
-
-                <div class="progress-wrapper">
-
-                    <div
-                        class="progress-bar ${progressClass}"
-                        style="width:${percentage}%;">
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- REMAINING BALANCE -->
-
-            <div class="qty-col">
-
-                <span class="${stockClass}">
-                    ${formatNumber(remaining)}
-                    ${escapeHTML(material.unit)}
-                </span>
-
-                <span class="usd-live-val">
-                    ${percentage.toFixed(1)}% remaining
-                </span>
-
-            </div>
-
-
-            <!-- UNIT PRICE -->
-
-            <div class="unit-price-col">
-
-                $${formatMoney(unitPrice)}
-
-                <span class="price-label">
-                    per ${escapeHTML(material.unit)}
-                </span>
-
-            </div>
-
-
-            <!-- TOTAL VALUE -->
-
-            <div class="total-value-col">
-
-                $${formatMoney(totalValue)}
-
-                <span class="price-label">
-                    ${formatNumber(remaining)}
-                    × $${formatMoney(unitPrice)}
-                </span>
-
-            </div>
-
-
-            <!-- ACTION -->
-
-            <div class="action-col">
-
-                <button
-                    class="btn btn-edit"
-                    onclick="editMaterial(${index})">
-                    Edit
-                </button>
-
-                <button
-                    class="btn btn-red"
-                    onclick="deleteMaterial(${index})">
-                    Delete
-                </button>
-
-            </div>
-
-        `;
-
-
-        container.appendChild(row);
-
-    });
-
-
-    updateMetrics();
-
-}
-
-
-/* ==========================================
-   METRICS
-========================================== */
-
-function updateMetrics() {
-
-    /*
-     * Total Value =
-     * SUM(Remaining Balance × Unit Price)
-     */
-
-    let totalValue = 0;
-
-    let lowBalanceCount = 0;
-
-
-    materials.forEach(material => {
 
         const remaining =
             Number(
@@ -1395,26 +1540,345 @@ function updateMetrics() {
             ) || 0;
 
 
+        /*
+         * IMPORTANT FORMULA
+         *
+         * Remaining Balance
+         * ×
+         * Unit Price
+         *
+         * =
+         * Total Value
+         */
+
+        const totalValue =
+            remaining * unitPrice;
+
+
+        /* =========================
+           PERCENTAGE
+        ========================= */
+
+        let percentage =
+            totalKg > 0
+                ? (
+                    remaining /
+                    totalKg
+                ) * 100
+                : 0;
+
+
+        percentage =
+            Math.max(
+                0,
+                Math.min(
+                    100,
+                    percentage
+                )
+            );
+
+
+        /* =========================
+           COLORS
+        ========================= */
+
+        let progressClass =
+            "bg-green";
+
+
+        let stockClass =
+            "good-stock-text";
+
+
+        if (percentage < 20) {
+
+            progressClass =
+                "bg-red";
+
+
+            stockClass =
+                "low-stock-text";
+
+        }
+
+        else if (percentage < 40) {
+
+            progressClass =
+                "bg-yellow";
+
+        }
+
+
+        /* =========================
+           BLUE NAME
+        ========================= */
+
+        const blueClass =
+            material.isBlue
+                ? "highlight-blue"
+                : "";
+
+
+        /* =========================
+           ROW
+        ========================= */
+
+        const row =
+            document.createElement(
+                "div"
+            );
+
+
+        row.className =
+            "material-row";
+
+
+        row.innerHTML = `
+
+
+            <!-- MATERIAL NAME -->
+
+            <div class="info-col">
+
+                <div
+                    class="material-name ${blueClass}">
+
+                    ${escapeHTML(
+                        material.name
+                    )}
+
+                </div>
+
+
+                <div class="material-val">
+
+                    Total:
+                    ${formatNumber(totalKg)}
+                    ${escapeHTML(
+                        material.unit
+                    )}
+
+                </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div>
+
+                <div class="progress-wrapper">
+
+                    <div
+                        class="progress-bar ${progressClass}"
+                        style="
+                            width:${percentage}%;
+                        ">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- REMAINING BALANCE -->
+
+            <div class="qty-col">
+
+                <span
+                    class="${stockClass}">
+
+                    ${formatNumber(
+                        remaining
+                    )}
+                    ${escapeHTML(
+                        material.unit
+                    )}
+
+                </span>
+
+
+                <span class="usd-live-val">
+
+                    ${percentage.toFixed(1)}%
+                    remaining
+
+                </span>
+
+            </div>
+
+
+            <!-- UNIT PRICE -->
+
+            <div class="unit-price-col">
+
+                $${formatMoney(
+                    unitPrice
+                )}
+
+                <span class="price-label">
+
+                    per
+                    ${escapeHTML(
+                        material.unit
+                    )}
+
+                </span>
+
+            </div>
+
+
+            <!-- TOTAL VALUE -->
+
+            <div class="total-value-col">
+
+                $${formatMoney(
+                    totalValue
+                )}
+
+                <span class="price-label">
+
+                    ${formatNumber(
+                        remaining
+                    )}
+
+                    ×
+
+                    $${formatMoney(
+                        unitPrice
+                    )}
+
+                </span>
+
+            </div>
+
+
+            <!-- ACTION -->
+
+            <div class="action-col">
+
+                <button
+                    class="btn btn-edit"
+                    onclick="editMaterial(${index})">
+
+                    Edit
+
+                </button>
+
+
+                <button
+                    class="btn btn-red"
+                    onclick="deleteMaterial(${index})">
+
+                    Delete
+
+                </button>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(row);
+
+
+    });
+
+
+    updateMetrics();
+
+}
+
+
+/* =====================================================
+   UPDATE FOOTER METRICS
+===================================================== */
+
+function updateMetrics() {
+
+    /*
+     * TOTAL KG
+     *
+     * All material Total Kg
+     */
+
+    let totalKg = 0;
+
+
+    /*
+     * TOTAL VALUE
+     *
+     * Remaining Balance × Unit Price
+     */
+
+    let totalValue = 0;
+
+
+    /*
+     * LOW BALANCE
+     */
+
+    let lowBalanceCount = 0;
+
+
+    materials.forEach(
+        material => {
+
+
         const maxQty =
             Number(
                 material.maxQty
             ) || 0;
 
 
-        const value =
+        const remaining =
+            Number(
+                material.remainingBalance
+            ) || 0;
+
+
+        const unitPrice =
+            Number(
+                material.unitPrice
+            ) || 0;
+
+
+        /* =========================
+           TOTAL KG
+        ========================= */
+
+        totalKg += maxQty;
+
+
+        /* =========================
+           TOTAL VALUE
+        ========================= */
+
+        const materialValue =
             remaining * unitPrice;
 
 
-        totalValue += value;
+        totalValue +=
+            materialValue;
 
+
+        /* =========================
+           LOW BALANCE
+        ========================= */
 
         const percentage =
             maxQty > 0
-                ? remaining / maxQty
+                ? (
+                    remaining /
+                    maxQty
+                ) * 100
                 : 0;
 
 
-        if (percentage < 0.20) {
+        if (
+            percentage < 20
+        ) {
 
             lowBalanceCount++;
 
@@ -1423,37 +1887,51 @@ function updateMetrics() {
     });
 
 
-    /*
-     * Both values are now based
-     * on current remaining stock.
-     */
+    /* =========================
+       TOTAL KG DISPLAY
+    ========================= */
+
+    document
+        .getElementById("total-kg")
+        .textContent =
+        formatNumber(totalKg)
+        + " kg";
+
+
+    /* =========================
+       TOTAL VALUE DISPLAY
+    ========================= */
 
     document
         .getElementById("total-value")
         .textContent =
-        "$" + formatMoney(totalValue);
+        "$"
+        + formatMoney(totalValue);
 
 
-    document
-        .getElementById("current-asset-value")
-        .textContent =
-        "$" + formatMoney(totalValue);
-
+    /* =========================
+       LOW WARNING
+    ========================= */
 
     const warning =
-        document.getElementById("low-warning");
+        document.getElementById(
+            "low-warning"
+        );
 
 
     warning.textContent =
         lowBalanceCount;
 
 
-    if (lowBalanceCount > 0) {
+    if (
+        lowBalanceCount > 0
+    ) {
 
         warning.className =
             "metric-value text-red";
 
     }
+
     else {
 
         warning.className =
@@ -1464,9 +1942,9 @@ function updateMetrics() {
 }
 
 
-/* ==========================================
-   EDIT
-========================================== */
+/* =====================================================
+   EDIT MATERIAL
+===================================================== */
 
 function editMaterial(index) {
 
@@ -1543,16 +2021,19 @@ function editMaterial(index) {
 
 
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
 
 }
 
 
-/* ==========================================
-   DELETE
-========================================== */
+/* =====================================================
+   DELETE MATERIAL
+===================================================== */
 
 function deleteMaterial(index) {
 
@@ -1567,15 +2048,22 @@ function deleteMaterial(index) {
 
 
     if (!confirmDelete) {
+
         return;
+
     }
 
 
-    materials.splice(index, 1);
+    materials.splice(
+        index,
+        1
+    );
+
 
     saveToStorage();
 
     renderMaterials();
+
 
     alert(
         "🗑️ Material deleted successfully."
@@ -1584,9 +2072,9 @@ function deleteMaterial(index) {
 }
 
 
-/* ==========================================
+/* =====================================================
    CANCEL EDIT
-========================================== */
+===================================================== */
 
 function cancelEdit() {
 
@@ -1597,9 +2085,9 @@ function cancelEdit() {
 }
 
 
-/* ==========================================
-   RESET
-========================================== */
+/* =====================================================
+   RESET FORM
+===================================================== */
 
 function resetForm() {
 
@@ -1632,9 +2120,9 @@ function resetForm() {
 }
 
 
-/* ==========================================
+/* =====================================================
    NUMBER FORMAT
-========================================== */
+===================================================== */
 
 function formatNumber(number) {
 
@@ -1648,9 +2136,9 @@ function formatNumber(number) {
 }
 
 
-/* ==========================================
+/* =====================================================
    MONEY FORMAT
-========================================== */
+===================================================== */
 
 function formatMoney(number) {
 
@@ -1665,25 +2153,45 @@ function formatMoney(number) {
 }
 
 
-/* ==========================================
+/* =====================================================
    HTML ESCAPE
-========================================== */
+===================================================== */
 
 function escapeHTML(value) {
 
     return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
-/* ==========================================
-   START
-========================================== */
+/* =====================================================
+   START APPLICATION
+===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
