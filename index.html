@@ -35,14 +35,14 @@
             max-width: 950px;
         }
 
-        /* 🛠️ অ্যাডমিন প্যানেল স্টাইল (শুরুতে লুকানো থাকবে) */
+        /* 🛠️ Admin Panel */
         .admin-panel {
             background-color: var(--admin-bg);
             border: 2px dashed var(--blue);
             border-radius: 8px;
             padding: 25px;
             margin-bottom: 25px;
-            display: none; /* পাসওয়ার্ড ছাড়া দেখা যাবে না */
+            display: none;
         }
 
         .admin-title {
@@ -96,7 +96,7 @@
         .btn-red { background-color: var(--red); color: #fff; padding: 4px 8px; font-size: 12px; }
         .btn-logout { background-color: #555; color: #fff; font-size: 12px; padding: 5px 10px; }
 
-        /* 📊 ড্যাশবোর্ড স্টাইল */
+        /* 📊 Dashboard */
         .dashboard {
             background-color: var(--card-bg);
             border-radius: 8px;
@@ -124,7 +124,7 @@
 
         .table-title-text { font-size: 13px; color: var(--text-muted); font-weight: bold; text-transform: uppercase; }
 
-        .materials-container { margin-bottom: 40px; }
+        .materials-container { margin-bottom: 40px; min-height: 20px; }
         .material-row { margin-bottom: 25px; }
         .info-col { display: flex; flex-direction: column; }
         .material-name { font-size: 16px; font-weight: bold; text-transform: uppercase;}
@@ -151,7 +151,7 @@
         .text-green { color: var(--green); }
         .text-red { color: var(--red); }
         
-        /* 🔒 অ্যাডমিন অ্যাক্সেস বাটন */
+        /* 🔒 Admin Button */
         .admin-trigger-zone { 
             text-align: center; 
             margin-top: 30px; 
@@ -182,7 +182,6 @@
             transform: translateY(-2px);
         }
         
-        /* ডিলিট কলামটি সাধারণত অ্যাক্সেস ছাড়া হাইড থাকবে */
         .action-col { display: none; text-align: center; }
         body.admin-logged-in .action-col { display: block; }
     </style>
@@ -191,7 +190,7 @@
 
 <div class="container">
 
-    <!-- 🛠️ ADMIN ENTRY PANEL (পাসওয়ার্ড দিলেই কেবল এটি সামনে আসবে) -->
+    <!-- 🛠️ ADMIN ENTRY PANEL -->
     <div class="admin-panel" id="adminPanel">
         <div class="admin-title">
             <span>Raw Materials Entry Form</span>
@@ -231,7 +230,7 @@
         </form>
     </div>
 
-    <!-- 📊 LIVE TRACKER DASHBOARD (এটি সবসময় দৃশ্যমান থাকবে) -->
+    <!-- 📊 LIVE TRACKER DASHBOARD -->
     <div class="dashboard">
         <div class="header">
             <div class="company-name">Seven Classic Ind. Ltd.</div>
@@ -246,7 +245,7 @@
         </div>
 
         <div class="materials-container" id="materials-list">
-            <!-- জাভাস্ক্রিপ্ট এখানে ডাটা রেন্ডার করবে -->
+            <!-- JS dynamically injects data -->
         </div>
 
         <div class="axis-labels">
@@ -268,3 +267,6 @@
                 <div class="metric-label">Current Asset Value</div>
                 <div class="metric-value text-green" id="current-asset-value">$0</div>
             </div>
+            <div class="metric-box">
+                <div class="metric-label">Low Balance Warning</div>
+                <div class="metric-value text-red" id="low-warning-count">0 materials</div>
