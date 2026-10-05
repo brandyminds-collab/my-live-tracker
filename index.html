@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Seven Classic Ind. Ltd. - Live Material Tracker</title>
+<title>Seven Classic Ind. Ltd. - Material Balance Tracker</title>
 
 <style>
 :root {
@@ -35,7 +35,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 950px;
+    max-width: 1100px;
     margin: auto;
 }
 
@@ -63,6 +63,13 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+}
+
+.admin-status {
+    color: var(--green);
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: none;
 }
 
 .form-grid {
@@ -140,10 +147,6 @@ body {
     padding: 7px 12px;
 }
 
-.btn-logout:hover {
-    background: #666;
-}
-
 /* =========================
    DASHBOARD
 ========================= */
@@ -174,13 +177,31 @@ body {
     font-weight: 600;
 }
 
-/* TABLE */
+/* =========================
+   TABLE
+========================= */
 
 .table-title-row,
 .material-row {
     display: grid;
-    grid-template-columns: 220px 1fr 180px 90px;
-    gap: 20px;
+
+    /*
+      Material
+      Progress
+      Remaining
+      Unit Price
+      Total Value
+      Action
+    */
+    grid-template-columns:
+        190px
+        1fr
+        140px
+        110px
+        130px
+        95px;
+
+    gap: 15px;
     align-items: center;
 }
 
@@ -191,7 +212,7 @@ body {
 }
 
 .table-title-text {
-    font-size: 13px;
+    font-size: 11px;
     color: var(--text-muted);
     font-weight: bold;
     text-transform: uppercase;
@@ -227,7 +248,9 @@ body {
     margin-top: 4px;
 }
 
-/* PROGRESS */
+/* =========================
+   PROGRESS
+========================= */
 
 .progress-wrapper {
     background: #1a1e26;
@@ -255,6 +278,10 @@ body {
     background: var(--yellow);
 }
 
+/* =========================
+   REMAINING
+========================= */
+
 .qty-col {
     text-align: right;
     font-weight: bold;
@@ -263,7 +290,7 @@ body {
 }
 
 .usd-live-val {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-muted);
     font-weight: normal;
     display: block;
@@ -277,12 +304,48 @@ body {
     color: var(--green);
 }
 
-/* AXIS */
+/* =========================
+   UNIT PRICE
+========================= */
+
+.unit-price-col {
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+    color: #d7dbe5;
+}
+
+.total-value-col {
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--green);
+}
+
+.price-label {
+    display: block;
+    color: var(--text-muted);
+    font-size: 10px;
+    font-weight: normal;
+    margin-top: 3px;
+}
+
+/* =========================
+   AXIS
+========================= */
 
 .axis-labels {
     display: grid;
-    grid-template-columns: 220px 1fr 180px 90px;
-    gap: 20px;
+
+    grid-template-columns:
+        190px
+        1fr
+        140px
+        110px
+        130px
+        95px;
+
+    gap: 15px;
     margin-bottom: 30px;
 }
 
@@ -295,7 +358,9 @@ body {
     padding: 0 5px;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 .footer-metrics {
     display: grid;
@@ -333,19 +398,14 @@ body {
     color: var(--red);
 }
 
-.text-yellow {
-    color: var(--yellow);
-}
-
 /* =========================
-   ADMIN BUTTON
+   ADMIN ACCESS
 ========================= */
 
 .admin-trigger-zone {
     text-align: center;
     margin-top: 30px;
     padding-bottom: 20px;
-    width: 100%;
 }
 
 .login-btn {
@@ -373,8 +433,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* ACTION COLUMN */
-
 .action-col {
     display: none;
     text-align: center;
@@ -384,7 +442,9 @@ body.admin-logged-in .action-col {
     display: block;
 }
 
-/* EMPTY */
+/* =========================
+   EMPTY
+========================= */
 
 .empty-message {
     text-align: center;
@@ -394,31 +454,14 @@ body.admin-logged-in .action-col {
     border-radius: 6px;
 }
 
-/* ADMIN STATUS */
-
-.admin-status {
-    color: var(--green);
-    font-size: 12px;
-    font-weight: normal;
-    text-transform: none;
-}
-
 /* =========================
    MOBILE
 ========================= */
 
-@media (max-width: 800px) {
-
-    body {
-        padding: 15px;
-    }
+@media (max-width: 950px) {
 
     .dashboard {
         padding: 20px 15px;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
     }
 
     .table-title-row {
@@ -427,18 +470,24 @@ body.admin-logged-in .action-col {
 
     .material-row {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
 
-        padding: 15px 0;
+        padding: 18px 0;
         border-bottom: 1px solid var(--border);
     }
 
-    .progress-wrapper {
-        margin-top: 5px;
+    .info-col {
+        grid-column: 1 / -1;
     }
 
-    .qty-col {
+    .progress-wrapper {
+        grid-column: 1 / -1;
+    }
+
+    .qty-col,
+    .unit-price-col,
+    .total-value-col {
         text-align: left;
     }
 
@@ -448,6 +497,22 @@ body.admin-logged-in .action-col {
 
     .axis-labels {
         display: none;
+    }
+}
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-title {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .footer-metrics {
@@ -469,9 +534,15 @@ body.admin-logged-in .action-col {
         font-size: 19px;
     }
 
-    .admin-title {
-        flex-direction: column;
-        align-items: flex-start;
+    .material-row {
+        grid-template-columns: 1fr;
+    }
+
+    .qty-col,
+    .unit-price-col,
+    .total-value-col,
+    .action-col {
+        text-align: left;
     }
 }
 </style>
@@ -481,278 +552,307 @@ body.admin-logged-in .action-col {
 
 <div class="container">
 
-    <!-- =========================
-         ADMIN PANEL
-    ========================== -->
+<!-- =========================
+     ADMIN PANEL
+========================= -->
 
-    <div class="admin-panel" id="adminPanel">
+<div class="admin-panel" id="adminPanel">
 
-        <div class="admin-title">
+    <div class="admin-title">
 
-            <div>
-                Raw Materials Entry Form
-
-                <span class="admin-status">
-                    ● Admin Mode
-                </span>
-            </div>
-
-            <button
-                class="btn btn-logout"
-                onclick="logoutAdmin()">
-                Close Admin Panel
-            </button>
-
+        <div>
+            Raw Materials Entry Form
+            <span class="admin-status">
+                ● Admin Mode
+            </span>
         </div>
-
-        <form id="materialForm" onsubmit="saveMaterial(event)">
-
-            <div class="form-grid">
-
-                <div class="form-group">
-                    <label>Material Name</label>
-
-                    <input
-                        type="text"
-                        id="matName"
-                        required
-                        placeholder="e.g. Duplex Board">
-                </div>
-
-                <div class="form-group">
-                    <label>Maximum Qty (Capacity)</label>
-
-                    <input
-                        type="number"
-                        id="maxQty"
-                        min="0"
-                        step="any"
-                        required
-                        placeholder="e.g. 10000">
-                </div>
-
-                <div class="form-group">
-                    <label>Current Stock</label>
-
-                    <input
-                        type="number"
-                        id="currentQty"
-                        min="0"
-                        step="any"
-                        required
-                        placeholder="e.g. 6000">
-                </div>
-
-                <div class="form-group">
-                    <label>Unit</label>
-
-                    <input
-                        type="text"
-                        id="unit"
-                        required
-                        placeholder="Kg, Pcs, Yards">
-                </div>
-
-                <div class="form-group">
-                    <label>Full Budget Value ($)</label>
-
-                    <input
-                        type="number"
-                        id="fullValue"
-                        min="0"
-                        step="any"
-                        required
-                        placeholder="e.g. 19000">
-                </div>
-
-                <div class="form-group">
-
-                    <label>Highlight Blue?</label>
-
-                    <select id="isBlue">
-
-                        <option value="false">
-                            No
-                        </option>
-
-                        <option value="true">
-                            Yes
-                        </option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-            <button
-                type="submit"
-                class="btn btn-blue"
-                id="saveButton">
-                Save & Update Stock
-            </button>
-
-            <button
-                type="button"
-                class="btn btn-logout"
-                id="cancelEditButton"
-                onclick="cancelEdit()"
-                style="display:none;">
-                Cancel Edit
-            </button>
-
-        </form>
-
-    </div>
-
-
-    <!-- =========================
-         DASHBOARD
-    ========================== -->
-
-    <div class="dashboard">
-
-        <div class="header">
-
-            <div class="company-name">
-                Seven Classic Ind. Ltd.
-            </div>
-
-            <div class="title">
-                Live Raw Material Balance Tracker
-            </div>
-
-        </div>
-
-
-        <!-- TABLE HEADER -->
-
-        <div class="table-title-row">
-
-            <div class="table-title-text">
-                Raw Materials Name
-            </div>
-
-            <div></div>
-
-            <div
-                class="table-title-text"
-                style="text-align:right;">
-                Live Status / Stock
-            </div>
-
-            <div class="table-title-text action-col">
-                Action
-            </div>
-
-        </div>
-
-
-        <!-- MATERIALS -->
-
-        <div
-            class="materials-container"
-            id="materials-list">
-
-            <div class="empty-message">
-                No raw materials added yet.
-                <br>
-                Login to Admin Panel to add materials.
-            </div>
-
-        </div>
-
-
-        <!-- AXIS -->
-
-        <div class="axis-labels">
-
-            <div></div>
-
-            <div class="labels-flex">
-
-                <span>20%</span>
-                <span>40%</span>
-                <span>60%</span>
-                <span>80%</span>
-                <span>100%</span>
-
-            </div>
-
-            <div></div>
-            <div></div>
-
-        </div>
-
-
-        <!-- FOOTER METRICS -->
-
-        <div class="footer-metrics">
-
-            <div class="metric-box">
-
-                <div class="metric-label">
-                    Total Value
-                </div>
-
-                <div
-                    class="metric-value"
-                    id="total-value">
-                    $0
-                </div>
-
-            </div>
-
-
-            <div class="metric-box">
-
-                <div class="metric-label">
-                    Current Asset Value
-                </div>
-
-                <div
-                    class="metric-value text-green"
-                    id="current-asset-value">
-                    $0
-                </div>
-
-            </div>
-
-
-            <div class="metric-box">
-
-                <div class="metric-label">
-                    Low Balance Warning
-                </div>
-
-                <div
-                    class="metric-value"
-                    id="low-warning">
-                    0
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         ADMIN ACCESS BUTTON
-    ========================== -->
-
-    <div class="admin-trigger-zone">
 
         <button
-            class="login-btn"
-            onclick="openAdminPanel()">
-
-            🔐 Admin Panel Access
-
+            class="btn btn-logout"
+            onclick="logoutAdmin()">
+            Close Admin Panel
         </button>
 
     </div>
+
+
+    <form id="materialForm" onsubmit="saveMaterial(event)">
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>Material Name</label>
+
+                <input
+                    type="text"
+                    id="matName"
+                    required
+                    placeholder="e.g. Duplex Board">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Maximum Qty / Total Kg</label>
+
+                <input
+                    type="number"
+                    id="maxQty"
+                    min="0"
+                    step="any"
+                    required
+                    placeholder="e.g. 10000">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Remaining Balance</label>
+
+                <input
+                    type="number"
+                    id="remainingBalance"
+                    min="0"
+                    step="any"
+                    required
+                    placeholder="e.g. 6000">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Unit</label>
+
+                <input
+                    type="text"
+                    id="unit"
+                    required
+                    placeholder="Kg, Pcs, Yards">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Unit Price ($)</label>
+
+                <input
+                    type="number"
+                    id="unitPrice"
+                    min="0"
+                    step="any"
+                    required
+                    placeholder="e.g. 2.50">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Highlight Blue?</label>
+
+                <select id="isBlue">
+
+                    <option value="false">
+                        No
+                    </option>
+
+                    <option value="true">
+                        Yes
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="btn btn-blue"
+            id="saveButton">
+            Save Material
+        </button>
+
+
+        <button
+            type="button"
+            class="btn btn-logout"
+            id="cancelEditButton"
+            onclick="cancelEdit()"
+            style="display:none;">
+            Cancel Edit
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- =========================
+     DASHBOARD
+========================= -->
+
+<div class="dashboard">
+
+    <div class="header">
+
+        <div class="company-name">
+            Seven Classic Ind. Ltd.
+        </div>
+
+        <div class="title">
+            Live Raw Material Balance Tracker
+        </div>
+
+    </div>
+
+
+    <!-- TABLE HEADER -->
+
+    <div class="table-title-row">
+
+        <div class="table-title-text">
+            Raw Materials
+        </div>
+
+        <div class="table-title-text">
+            Balance Level
+        </div>
+
+        <div
+            class="table-title-text"
+            style="text-align:right;">
+            Remaining Balance
+        </div>
+
+        <div
+            class="table-title-text"
+            style="text-align:right;">
+            Unit Price
+        </div>
+
+        <div
+            class="table-title-text"
+            style="text-align:right;">
+            Total Value
+        </div>
+
+        <div class="table-title-text action-col">
+            Action
+        </div>
+
+    </div>
+
+
+    <!-- MATERIALS -->
+
+    <div
+        class="materials-container"
+        id="materials-list">
+
+        <div class="empty-message">
+            No raw materials added yet.
+            <br>
+            Login to Admin Panel to add materials.
+        </div>
+
+    </div>
+
+
+    <!-- AXIS -->
+
+    <div class="axis-labels">
+
+        <div></div>
+
+        <div class="labels-flex">
+            <span>20%</span>
+            <span>40%</span>
+            <span>60%</span>
+            <span>80%</span>
+            <span>100%</span>
+        </div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <div class="footer-metrics">
+
+        <div class="metric-box">
+
+            <div class="metric-label">
+                Total Value
+            </div>
+
+            <div
+                class="metric-value"
+                id="total-value">
+                $0
+            </div>
+
+        </div>
+
+
+        <div class="metric-box">
+
+            <div class="metric-label">
+                Current Asset Value
+            </div>
+
+            <div
+                class="metric-value text-green"
+                id="current-asset-value">
+                $0
+            </div>
+
+        </div>
+
+
+        <div class="metric-box">
+
+            <div class="metric-label">
+                Low Balance Warning
+            </div>
+
+            <div
+                class="metric-value"
+                id="low-warning">
+                0
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ADMIN ACCESS -->
+
+<div class="admin-trigger-zone">
+
+    <button
+        class="login-btn"
+        onclick="openAdminPanel()">
+
+        🔐 Admin Panel Access
+
+    </button>
+
+</div>
 
 </div>
 
@@ -773,7 +873,7 @@ let editingIndex = -1;
 
 
 /* ==========================================
-   LOAD DATA
+   LOAD
 ========================================== */
 
 function loadMaterials() {
@@ -787,15 +887,40 @@ function loadMaterials() {
 
             materials = JSON.parse(savedData);
 
+            /*
+             * Old version compatibility:
+             * currentQty -> remainingBalance
+             */
+
+            materials = materials.map(item => {
+
+                if (
+                    item.remainingBalance === undefined &&
+                    item.currentQty !== undefined
+                ) {
+                    item.remainingBalance =
+                        Number(item.currentQty);
+                }
+
+                /*
+                 * Old version had fullValue.
+                 * We cannot know the old unit price,
+                 * so default it to 0.
+                 */
+
+                if (item.unitPrice === undefined) {
+                    item.unitPrice = 0;
+                }
+
+                return item;
+
+            });
+
         } catch (error) {
 
             materials = [];
 
         }
-
-    } else {
-
-        materials = [];
 
     }
 
@@ -804,7 +929,7 @@ function loadMaterials() {
 
 
 /* ==========================================
-   SAVE DATA
+   STORAGE
 ========================================== */
 
 function saveToStorage() {
@@ -818,7 +943,7 @@ function saveToStorage() {
 
 
 /* ==========================================
-   ADMIN LOGIN
+   LOGIN
 ========================================== */
 
 function openAdminPanel() {
@@ -876,18 +1001,20 @@ function logoutAdmin() {
 
 
 /* ==========================================
-   SAVE / UPDATE MATERIAL
+   SAVE MATERIAL
 ========================================== */
 
 function saveMaterial(event) {
 
     event.preventDefault();
 
+
     const name =
         document
             .getElementById("matName")
             .value
             .trim();
+
 
     const maxQty =
         Number(
@@ -896,12 +1023,14 @@ function saveMaterial(event) {
                 .value
         );
 
-    const currentQty =
+
+    const remainingBalance =
         Number(
             document
-                .getElementById("currentQty")
+                .getElementById("remainingBalance")
                 .value
         );
+
 
     const unit =
         document
@@ -909,12 +1038,14 @@ function saveMaterial(event) {
             .value
             .trim();
 
-    const fullValue =
+
+    const unitPrice =
         Number(
             document
-                .getElementById("fullValue")
+                .getElementById("unitPrice")
                 .value
         );
+
 
     const isBlue =
         document
@@ -931,30 +1062,37 @@ function saveMaterial(event) {
 
     }
 
+
     if (maxQty <= 0) {
 
-        alert("Maximum quantity must be greater than 0.");
+        alert("Total Kg / Maximum Qty must be greater than 0.");
         return;
 
     }
 
-    if (currentQty < 0) {
 
-        alert("Current stock cannot be negative.");
+    if (remainingBalance < 0) {
+
+        alert("Remaining Balance cannot be negative.");
         return;
 
     }
 
-    if (currentQty > maxQty) {
 
-        alert("Current stock cannot be greater than maximum capacity.");
+    if (remainingBalance > maxQty) {
+
+        alert(
+            "Remaining Balance cannot be greater than Total Kg."
+        );
+
         return;
 
     }
 
-    if (fullValue < 0) {
 
-        alert("Budget value cannot be negative.");
+    if (unitPrice < 0) {
+
+        alert("Unit Price cannot be negative.");
         return;
 
     }
@@ -966,11 +1104,11 @@ function saveMaterial(event) {
 
         maxQty: maxQty,
 
-        currentQty: currentQty,
+        remainingBalance: remainingBalance,
 
         unit: unit,
 
-        fullValue: fullValue,
+        unitPrice: unitPrice,
 
         isBlue: isBlue
 
@@ -981,9 +1119,12 @@ function saveMaterial(event) {
 
     if (editingIndex !== -1) {
 
-        materials[editingIndex] = material;
+        materials[editingIndex] =
+            material;
 
-        alert("✅ Material updated successfully.");
+        alert(
+            "✅ Material updated successfully."
+        );
 
     }
 
@@ -993,7 +1134,9 @@ function saveMaterial(event) {
 
         materials.push(material);
 
-        alert("✅ Material added successfully.");
+        alert(
+            "✅ Material added successfully."
+        );
 
     }
 
@@ -1008,13 +1151,14 @@ function saveMaterial(event) {
 
 
 /* ==========================================
-   RENDER MATERIALS
+   RENDER
 ========================================== */
 
 function renderMaterials() {
 
     const container =
         document.getElementById("materials-list");
+
 
     container.innerHTML = "";
 
@@ -1038,21 +1182,42 @@ function renderMaterials() {
 
     materials.forEach((material, index) => {
 
+        const totalKg =
+            Number(material.maxQty) || 0;
+
+
+        const remaining =
+            Number(
+                material.remainingBalance
+            ) || 0;
+
+
+        const unitPrice =
+            Number(material.unitPrice) || 0;
+
+
+        /*
+         * MAIN FORMULA
+         *
+         * Total Value =
+         * Remaining Balance × Unit Price
+         */
+
+        const totalValue =
+            remaining * unitPrice;
+
+
         let percentage =
-            (material.currentQty / material.maxQty) * 100;
+            totalKg > 0
+                ? (remaining / totalKg) * 100
+                : 0;
+
 
         percentage =
             Math.max(
                 0,
                 Math.min(100, percentage)
             );
-
-
-        /* Current financial value */
-
-        const currentValue =
-            material.fullValue *
-            (percentage / 100);
 
 
         /* Color */
@@ -1069,7 +1234,8 @@ function renderMaterials() {
             progressClass = "bg-red";
             stockClass = "low-stock-text";
 
-        } else if (percentage < 40) {
+        }
+        else if (percentage < 40) {
 
             progressClass = "bg-yellow";
 
@@ -1085,11 +1251,14 @@ function renderMaterials() {
         const row =
             document.createElement("div");
 
+
         row.className =
             "material-row";
 
 
         row.innerHTML = `
+
+            <!-- MATERIAL -->
 
             <div class="info-col">
 
@@ -1098,13 +1267,15 @@ function renderMaterials() {
                 </div>
 
                 <div class="material-val">
-                    Capacity:
-                    ${formatNumber(material.maxQty)}
+                    Total:
+                    ${formatNumber(totalKg)}
                     ${escapeHTML(material.unit)}
                 </div>
 
             </div>
 
+
+            <!-- PROGRESS -->
 
             <div>
 
@@ -1120,21 +1291,50 @@ function renderMaterials() {
             </div>
 
 
+            <!-- REMAINING BALANCE -->
+
             <div class="qty-col">
 
                 <span class="${stockClass}">
-                    ${formatNumber(material.currentQty)}
+                    ${formatNumber(remaining)}
                     ${escapeHTML(material.unit)}
                 </span>
 
                 <span class="usd-live-val">
-                    ${percentage.toFixed(1)}%
-                    &nbsp; | &nbsp;
-                    $${formatMoney(currentValue)}
+                    ${percentage.toFixed(1)}% remaining
                 </span>
 
             </div>
 
+
+            <!-- UNIT PRICE -->
+
+            <div class="unit-price-col">
+
+                $${formatMoney(unitPrice)}
+
+                <span class="price-label">
+                    per ${escapeHTML(material.unit)}
+                </span>
+
+            </div>
+
+
+            <!-- TOTAL VALUE -->
+
+            <div class="total-value-col">
+
+                $${formatMoney(totalValue)}
+
+                <span class="price-label">
+                    ${formatNumber(remaining)}
+                    × $${formatMoney(unitPrice)}
+                </span>
+
+            </div>
+
+
+            <!-- ACTION -->
 
             <div class="action-col">
 
@@ -1166,34 +1366,52 @@ function renderMaterials() {
 
 
 /* ==========================================
-   UPDATE METRICS
+   METRICS
 ========================================== */
 
 function updateMetrics() {
 
-    let totalValue = 0;
+    /*
+     * Total Value =
+     * SUM(Remaining Balance × Unit Price)
+     */
 
-    let currentAssetValue = 0;
+    let totalValue = 0;
 
     let lowBalanceCount = 0;
 
 
     materials.forEach(material => {
 
-        totalValue +=
-            Number(material.fullValue);
+        const remaining =
+            Number(
+                material.remainingBalance
+            ) || 0;
+
+
+        const unitPrice =
+            Number(
+                material.unitPrice
+            ) || 0;
+
+
+        const maxQty =
+            Number(
+                material.maxQty
+            ) || 0;
+
+
+        const value =
+            remaining * unitPrice;
+
+
+        totalValue += value;
 
 
         const percentage =
-            material.maxQty > 0
-                ? material.currentQty /
-                  material.maxQty
+            maxQty > 0
+                ? remaining / maxQty
                 : 0;
-
-
-        currentAssetValue +=
-            material.fullValue *
-            percentage;
 
 
         if (percentage < 0.20) {
@@ -1205,6 +1423,11 @@ function updateMetrics() {
     });
 
 
+    /*
+     * Both values are now based
+     * on current remaining stock.
+     */
+
     document
         .getElementById("total-value")
         .textContent =
@@ -1214,7 +1437,7 @@ function updateMetrics() {
     document
         .getElementById("current-asset-value")
         .textContent =
-        "$" + formatMoney(currentAssetValue);
+        "$" + formatMoney(totalValue);
 
 
     const warning =
@@ -1230,7 +1453,8 @@ function updateMetrics() {
         warning.className =
             "metric-value text-red";
 
-    } else {
+    }
+    else {
 
         warning.className =
             "metric-value text-green";
@@ -1241,7 +1465,7 @@ function updateMetrics() {
 
 
 /* ==========================================
-   EDIT MATERIAL
+   EDIT
 ========================================== */
 
 function editMaterial(index) {
@@ -1249,30 +1473,36 @@ function editMaterial(index) {
     const material =
         materials[index];
 
+
     document
         .getElementById("matName")
         .value =
         material.name;
+
 
     document
         .getElementById("maxQty")
         .value =
         material.maxQty;
 
+
     document
-        .getElementById("currentQty")
+        .getElementById("remainingBalance")
         .value =
-        material.currentQty;
+        material.remainingBalance;
+
 
     document
         .getElementById("unit")
         .value =
         material.unit;
 
+
     document
-        .getElementById("fullValue")
+        .getElementById("unitPrice")
         .value =
-        material.fullValue;
+        material.unitPrice;
+
 
     document
         .getElementById("isBlue")
@@ -1282,7 +1512,8 @@ function editMaterial(index) {
             : "false";
 
 
-    editingIndex = index;
+    editingIndex =
+        index;
 
 
     document
@@ -1320,7 +1551,7 @@ function editMaterial(index) {
 
 
 /* ==========================================
-   DELETE MATERIAL
+   DELETE
 ========================================== */
 
 function deleteMaterial(index) {
@@ -1346,8 +1577,9 @@ function deleteMaterial(index) {
 
     renderMaterials();
 
-
-    alert("🗑️ Material deleted.");
+    alert(
+        "🗑️ Material deleted successfully."
+    );
 
 }
 
@@ -1366,7 +1598,7 @@ function cancelEdit() {
 
 
 /* ==========================================
-   RESET FORM
+   RESET
 ========================================== */
 
 function resetForm() {
@@ -1385,7 +1617,7 @@ function resetForm() {
     document
         .getElementById("saveButton")
         .textContent =
-        "Save & Update Stock";
+        "Save Material";
 
 
     document
@@ -1401,7 +1633,7 @@ function resetForm() {
 
 
 /* ==========================================
-   FORMAT NUMBER
+   NUMBER FORMAT
 ========================================== */
 
 function formatNumber(number) {
@@ -1417,7 +1649,7 @@ function formatNumber(number) {
 
 
 /* ==========================================
-   FORMAT MONEY
+   MONEY FORMAT
 ========================================== */
 
 function formatMoney(number) {
@@ -1425,7 +1657,7 @@ function formatMoney(number) {
     return Number(number).toLocaleString(
         "en-US",
         {
-            minimumFractionDigits: 0,
+            minimumFractionDigits: 2,
             maximumFractionDigits: 2
         }
     );
@@ -1434,7 +1666,7 @@ function formatMoney(number) {
 
 
 /* ==========================================
-   SECURITY / HTML ESCAPE
+   HTML ESCAPE
 ========================================== */
 
 function escapeHTML(value) {
@@ -1450,7 +1682,7 @@ function escapeHTML(value) {
 
 
 /* ==========================================
-   START APP
+   START
 ========================================== */
 
 document.addEventListener(
