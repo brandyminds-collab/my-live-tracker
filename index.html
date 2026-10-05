@@ -35,14 +35,13 @@
             max-width: 950px;
         }
 
-        /* Admin Panel Styles */
+        /* 🛠️ অ্যাডমিন ফর্ম ডিজাইন - এটি সবসময় স্ক্রিনে দেখা যাবে */
         .admin-panel {
             background-color: var(--admin-bg);
             border: 2px dashed var(--blue);
             border-radius: 8px;
             padding: 25px;
             margin-bottom: 25px;
-            display: none;
         }
 
         .admin-title {
@@ -51,9 +50,6 @@
             color: var(--blue);
             margin-bottom: 15px;
             text-transform: uppercase;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .form-grid {
@@ -94,9 +90,8 @@
 
         .btn-blue { background-color: var(--blue); color: #fff; }
         .btn-red { background-color: var(--red); color: #fff; padding: 4px 8px; font-size: 12px; }
-        .btn-logout { background-color: #555; color: #fff; font-size: 12px; padding: 5px 10px; }
 
-        /* Dashboard Styles */
+        /* 📊 ড্যাশবোর্ড ডিজাইন */
         .dashboard {
             background-color: var(--card-bg);
             border-radius: 8px;
@@ -124,7 +119,7 @@
 
         .table-title-text { font-size: 13px; color: var(--text-muted); font-weight: bold; text-transform: uppercase; }
 
-        .materials-container { margin-bottom: 40px; min-height: 50px; }
+        .materials-container { margin-bottom: 40px; }
         .material-row { margin-bottom: 25px; }
         .info-col { display: flex; flex-direction: column; }
         .material-name { font-size: 16px; font-weight: bold; text-transform: uppercase;}
@@ -150,57 +145,22 @@
         .metric-value { font-size: 24px; font-weight: bold; }
         .text-green { color: var(--green); }
         .text-red { color: var(--red); }
-
-        /* 🔒 অ্যাডমিন বাটন ডিজাইন */
-        .admin-trigger-zone { 
-            text-align: center; 
-            margin-top: 30px; 
-            margin-bottom: 30px;
-            width: 100%;
-        }
         
-        .login-btn { 
-            background-color: #242933;
-            border: 1px solid var(--border);
-            color: #d1d5db;
-            font-size: 14px; 
-            padding: 12px 28px;
-            border-radius: 6px;
-            cursor: pointer; 
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        .login-btn:hover {
-            background-color: var(--blue);
-            color: #fff;
-            border-color: var(--blue);
-            transform: translateY(-2px);
-        }
-        
-        .action-col { display: none; text-align: center; }
-        body.admin-logged-in .action-col { display: block; }
+        .action-col { text-align: center; }
     </style>
 </head>
 <body>
 
 <div class="container">
 
-    <!-- 🛠️ ADMIN ENTRY PANEL -->
-    <div class="admin-panel" id="adminPanel">
-        <div class="admin-title">
-            <span>Raw Materials Entry Form</span>
-            <button class="btn btn-logout" onclick="logoutAdmin()">Close Admin</button>
-        </div>
+    <!-- 🛠️ DIRECT ADMIN ENTRY PANEL (সবসময় দৃশ্যমান) -->
+    <div class="admin-panel">
+        <div class="admin-title">Raw Materials Entry Form</div>
         <form id="materialForm" onsubmit="addMaterial(event)">
             <div class="form-grid">
                 <div class="form-group">
                     <label>Material Name</label>
-                    <input type="text" id="matName" required placeholder="e.g. Duplex Board">
+                    <input type="text" id="matName" required placeholder="e.g. Polyester Yarn">
                 </div>
                 <div class="form-group">
                     <label>Maximum Qty (Capacity)</label>
@@ -208,7 +168,7 @@
                 </div>
                 <div class="form-group">
                     <label>Current Stock</label>
-                    <input type="number" id="currentQty" required placeholder="e.g. 6000">
+                    <input type="number" id="currentQty" required placeholder="e.g. 4010">
                 </div>
                 <div class="form-group">
                     <label>Unit</label>
@@ -216,7 +176,7 @@
                 </div>
                 <div class="form-group">
                     <label>Full Budget Value ($)</label>
-                    <input type="number" id="fullValue" required placeholder="e.g. 19000">
+                    <input type="number" id="fullValue" required placeholder="e.g. 25000">
                 </div>
                 <div class="form-group">
                     <label>Highlight Blue?</label>
@@ -244,29 +204,52 @@
             <div class="table-title-text action-col">Action</div>
         </div>
 
+        <!-- ডিফল্ট প্রোডাক্ট মেটেরিয়াল লিস্ট এখানে সরাসরি লোড হবে -->
         <div class="materials-container" id="materials-list">
-            <!-- Data dynamically injected -->
-        </div>
+            <!-- Polyester Yarn -->
+            <div class="material-row" id="row-1">
+                <div class="info-col">
+                    <span class="material-name">Polyester Yarn</span>
+                    <span class="material-val">Val: $25,000</span>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-bar bg-green" style="width: 40.1%"></div>
+                </div>
+                <div class="qty-col">
+                    4,010 Kg
+                    <span class="usd-live-val">($10,025 USD)</span>
+                </div>
+                <div class="action-col">
+                    <button class="btn btn-red" onclick="document.getElementById('row-1').remove(); recalculate();">Delete</button>
+                </div>
+            </div>
 
-        <div class="axis-labels">
-            <div class="labels-flex">
-                <span>20%</span>
-                <span>40%</span>
-                <span>60%</span>
-                <span>80%</span>
-                <span>100%</span>
+            <!-- Duplex Board -->
+            <div class="material-row" id="row-2">
+                <div class="info-col">
+                    <span class="material-name">Duplex Board</span>
+                    <span class="material-val">Val: $19,000</span>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-bar bg-green" style="width: 60.0%"></div>
+                </div>
+                <div class="qty-col">
+                    6,002 Kg
+                    <span class="usd-live-val">($11,404 USD)</span>
+                </div>
+                <div class="action-col">
+                    <button class="btn btn-red" onclick="document.getElementById('row-2').remove(); recalculate();">Delete</button>
+                </div>
             </div>
-        </div>
 
-        <div class="footer-metrics">
-            <div class="metric-box">
-                <div class="metric-label">Total Value</div>
-                <div class="metric-value" id="total-value">$0</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">Current Asset Value</div>
-                <div class="metric-value text-green" id="current-asset-value">$0</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">Low Balance Warning</div>
-                <div class="metric-value text-red" id="low-warning-count">0 materials</div>
+            <!-- Art Card -->
+            <div class="material-row" id="row-3">
+                <div class="info-col">
+                    <span class="material-name text-red">Art Card</span>
+                    <span class="material-val">Val: $8,000</span>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-bar bg-red" style="width: 23.8%"></div>
+                </div>
+                <div class="qty-col text-red">
+                    11,916 Kg
