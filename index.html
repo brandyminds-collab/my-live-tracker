@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven Classic Ind. Ltd. - Live Tracker</title>
+    <style>
+        :root {
+            --bg-color: #1a1d24;
+            --card-bg: #13161c;
+            --text-main: #ffffff;
+            --text-muted: #8a92a6;
+            --green: #2ecc71;
+            --red: #e74c3c;
+            --blue: #3498db;
+            --border: #2c313d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .dashboard {
+            width: 100%;
+            max-width: 900px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid var(--border);
+        }
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .company-name {
+            font-size: 14px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .title {
+            font-size: 22px;
+            margin: 5px 0 0 0;
+            font-weight: 600;
+        }
+
+        .table-title-row {
+            display: grid;
+            grid-template-columns: 200px 1fr 180px;
+            gap: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .table-title-text {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .materials-container {
+            margin-bottom: 40px;
+        }
+
+        .material-row {
+            display: grid;
+            grid-template-columns: 200px 1fr 180px;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .info-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .material-name {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .material-name.highlight-blue {
+            color: var(--blue);
+        }
+
+        .material-val {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .progress-wrapper {
+            background-color: #1a1e26;
+            border-radius: 20px;
+            height: 14px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 20px;
+            transition: width 0.5s ease, background-color 0.5s ease;
+        }
+
+        .bg-green { background-color: var(--green); }
+        .bg-red { background-color: var(--red); }
+
+        .qty-col {
+            text-align: right;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.3s;
+            line-height: 1.4;
+        }
+
+        .usd-live-val {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: normal;
+            display: block;
+        }
+        
+        .text-red .usd-live-val {
+            color: #ff8a80;
+        }
+
+        .axis-labels {
+            display: grid;
+            grid-template-columns: 200px 1fr 180px;
+            margin-bottom: 30px;
+            padding-right: 180px;
+        }
+        .labels-flex {
+            grid-column: 2;
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 12px;
+            padding: 0 5px;
+        }
+
+        .footer-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid var(--border);
+            padding-top: 25px;
+            text-align: center;
+        }
+
+        .metric-box {
+            border-right: 1px solid var(--border);
+        }
+
+        .metric-box:last-child {
+            border-right: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .text-green { color: var(--green); }
+        .text-red { color: var(--red); }
+    </style>
+</head>
+<body>
+
+<div class="dashboard">
+    <div class="header">
+        <div class="company-name">Seven Classic Ind. Ltd.</div>
+        <div class="title">Live Raw Material Material Balance Tracker</div>
+    </div>
+
+    <div class="table-title-row">
+        <div class="table-title-text">Raw Materials Name</div>
+        <div></div>
+        <div class="table-title-text" style="text-align: right;">Live Status / Stock</div>
+    </div>
+
+    <div class="materials-container" id="materials-list">
+        <!-- JS will dynamically inject items here -->
+    </div>
+
+    <div class="axis-labels">
+        <div class="labels-flex">
+            <span>20%</span>
+            <span>40%</span>
+            <span>60%</span>
+            <span>80%</span>
+            <span>100%</span>
+        </div>
+    </div>
+
+    <div class="footer-metrics">
+        <div class="metric-box">
+            <div class="metric-label">Total Value</div>
+            <div class="metric-value" id="total-value">\$0</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-label">Current Asset Value</div>
+            <div class="metric-value text-green" id="current-asset-value">\$0</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-label">Low Balance Warning</div>
+            <div class="metric-value text-red" id="low-warning-count">0 materials</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ✍️ এখানে আপনার আসল ডাটা এডিট করুন:
+    // maxQty = সর্বোচ্চ ধারণক্ষমতা, currentQty = আজকের আসল স্টক, fullValue = মোট বাজেট মূল্য
+    const materialsData = [
+        { id: 1, name: 'Premium Cotton Yarn', maxQty: 10000, currentQty: 4010, unit: 'Kg', fullValue: 25000, isBlue: false },
+        { id: 2, name: 'Polyester Fabric Mesh', maxQty: 10000, currentQty: 6002, unit: 'Yards', fullValue: 19000, isBlue: false },
+        { id: 3, name: 'Zinc Alloy Buttons', maxQty: 50000, currentQty: 11916, unit: 'Pcs', fullValue: 8000, isBlue: false },
+        { id: 4, name: 'High-Tensile Thread', maxQty: 2000, currentQty: 313, unit: 'Cones', fullValue: 4500, isBlue: false },
+        { id: 5, name: 'Eco Packaging Cartons', maxQty: 10000, currentQty: 2779, unit: 'Pcs', fullValue: 5000, isBlue: true }
+    ];
+
+    function updateDashboard() {
+        const container = document.getElementById('materials-list');
+        container.innerHTML = '';
+
+        let totalValueSum = 0;
+        let currentAssetValueSum = 0;
+        let lowWarningCount = 0;
+
+        materialsData.forEach(mat => {
+            // র্যান্ডম চেঞ্জের কোড দুটি এখান থেকে সরিয়ে দেওয়া হয়েছে যেন আপনার ডাটা ফিক্সড থাকে।
+            const percentage = (mat.currentQty / mat.maxQty) * 100;
+            const currentValue = (mat.fullValue * (percentage / 100));
+
+            totalValueSum += mat.fullValue;
+            currentAssetValueSum += currentValue;
+
+            const isLow = percentage < 30;
+            if (isLow) lowWarningCount++;
+
+            const barColorClass = isLow ? 'bg-red' : 'bg-green';
+            const textColorClass = isLow ? 'text-red' : '';
+            const nameBlueClass = mat.isBlue ? 'highlight-blue' : '';
+
+            const rowHtml = `
+                <div class="material-row">
+                    <div class="info-col">
+                        <span class="material-name ${nameBlueClass}">${mat.name}</span>
+                        <span class="material-val">Val: $${mat.fullValue.toLocaleString()}</span>
+                    </div>
+                    <div class="progress-wrapper">
+                        <div class="progress-bar ${barColorClass}" style="width: ${percentage}%"></div>
+                    </div>
+                    <div class="qty-col ${textColorClass}">
+                        ${mat.currentQty.toLocaleString()} ${mat.unit}
+                        <span class="usd-live-val">($${Math.round(currentValue).toLocaleString()} USD)</span>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += rowHtml;
+        });
+
+        document.getElementById('total-value').innerText = `$${totalValueSum.toLocaleString()}`;
+        document.getElementById('current-asset-value').innerText = `$${Math.round(currentAssetValueSum).toLocaleString()}`;
+        document.getElementById('low-warning-count').innerText = `${lowWarningCount} ${lowWarningCount === 1 ? 'material' : 'materials'}`;
+    }
+
+    // স্ক্রিন লোড হওয়ামাত্র আপনার দেওয়া ডাটা প্রদর্শন করবে
+    updateDashboard();
+</script>
+
+</body>
+</html>
