@@ -151,7 +151,7 @@
         .text-green { color: var(--green); }
         .text-red { color: var(--red); }
 
-        /* 🔒 ক্লিকেবল বাটন ডিজাইন আপডেট (ফিক্সড) */
+        /* 🔒 ক্লিকেবল বাটন ডিজাইন আপডেট */
         .admin-trigger-zone { 
             text-align: center; 
             margin-top: 30px; 
@@ -270,76 +270,4 @@
                 <div class="metric-label">Low Balance Warning</div>
                 <div class="metric-value text-red" id="low-warning-count">0 materials</div>
             </div>
- const defaultMaterials = [
- { id: 1, name: 'Polyester Yarn', maxQty: 10000, currentQty: 4010, unit: 'Kg', fullValue: 25000, isBlue: false },
-{ id: 2, name: 'Duplex Board', maxQty: 10000, currentQty: 6002, unit: 'Kg', fullValue: 19000, isBlue: false },
-{ id: 3, name: 'Art Card', maxQty: 50000, currentQty: 11916, unit: 'Kg', fullValue: 8000, isBlue: false },
-{ id: 4, name: 'metallic yarn', maxQty: 2000, currentQty: 313, unit: 'Kg', fullValue: 4500, isBlue: false },
-{ id: 5, name: 'Artificial Leather', maxQty: 10000, currentQty: 2779, unit: 'Kg', fullValue: 450000, isBlue: true }
-];
-let materialsData = JSON.parse(localStorage.getItem('factory_materials')) || defaultMaterials;
-function loginAdmin() {
-const password = prompt("অনুগ্রহ করে অ্যাডমিন পাসওয়ার্ড দিন:");
-if (password === "admin123") {
-document.getElementById('adminPanel').style.display = 'block';
-document.body.classList.add('admin-logged-in');
-window.scrollTo({ top: 0, behavior: 'smooth' }); // অ্যাডমিন প্যানেল খোলার পর পেজটি মসৃণভাবে ওপরে উঠে যাবে
-updateDashboard();
-} else if (password !== null) {
-alert("ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।");
-}
-}
-function logoutAdmin() {
-document.getElementById('adminPanel').style.display = 'none';
-document.body.classList.remove('admin-logged-in');
-updateDashboard();
-}
-function addMaterial(e) {
-e.preventDefault();
-const newMat = {
-id: Date.now(),
-name: document.getElementById('matName').value,
-maxQty: Number(document.getElementById('maxQty').value),
-currentQty: Number(document.getElementById('currentQty').value),
-unit: document.getElementById('unit').value,
-fullValue: Number(document.getElementById('fullValue').value),
-isBlue: document.getElementById('isBlue').value === 'true'
-};
-materialsData.push(newMat);
-saveAndRefresh();
-document.getElementById('materialForm').reset();
-}
-function deleteMaterial(id) {
-if(confirm("আপনি কি নিশ্চিতভাবে এই আইটেমটি ডিলিট করতে চান?")) {
-materialsData = materialsData.filter(mat => mat.id !== id);
-saveAndRefresh();
-}
-}
-function saveAndRefresh() {
-localStorage.setItem('factory_materials', JSON.stringify(materialsData));
-updateDashboard();
-}
-function updateDashboard() {
-const container = document.getElementById('materials-list');
-container.innerHTML = '';
-let totalValueSum = 0;
-let currentAssetValueSum = 0;
-let lowWarningCount = 0;
-materialsData.forEach(mat => {
-const percentage = Math.min(100, (mat.currentQty / mat.maxQty) * 100);
-const currentValue = (mat.fullValue * (percentage / 100));
-totalValueSum += mat.fullValue;
-currentAssetValueSum += currentValue;
-const isLow = percentage < 30;
-if (isLow) lowWarningCount++;
-const barColorClass = isLow ? 'bg-red' : 'bg-green';
-const textColorClass = isLow ? 'text-red' : '';
-const nameBlueClass = mat.isBlue ? 'highlight-blue' : '';
-const rowHtml = <div class="material-row"> <div class="info-col"> <span class="material-name ${nameBlueClass}">${mat.name}</span> <span class="material-val">Val: $${mat.fullValue.toLocaleString()}</span> </div> <div class="progress-wrapper"> <div class="progress-bar ${barColorClass}" style="width: ${percentage}%"></div> </div> <div class="qty-col ${textColorClass}"> ${mat.currentQty.toLocaleString()} ${mat.unit} <span class="usd-live-val">($${Math.round(currentValue).toLocaleString()} USD)</span> </div> <div class="action-col"> <button class="btn btn-red" onclick="deleteMaterial(${mat.id})">Delete</button> </div> </div>;
-container.innerHTML += rowHtml;
-});
-document.getElementById('total-value').innerText = $${totalValueSum.toLocaleString()};
-document.getElementById('current-asset-value').innerText = $${Math.round(currentAssetValueSum).toLocaleString()};
-document.getElementById('low-warning-count').innerText = ${lowWarningCount} ${lowWarningCount === 1 ? 'material' : 'materials'};
-}
-updateDashboard();
+        </div>
