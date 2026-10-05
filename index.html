@@ -39,7 +39,7 @@
         }
 
         .header {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .company-name {
@@ -56,6 +56,24 @@
             font-weight: 600;
         }
 
+        /* Table Header Style */
+        .table-title-row {
+            display: grid;
+            grid-template-columns: 200px 1fr 180px;
+            gap: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .table-title-text {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         /* Material Rows */
         .materials-container {
             margin-bottom: 40px;
@@ -63,7 +81,7 @@
 
         .material-row {
             display: grid;
-            grid-template-columns: 200px 1fr 180px; /* ডানপাশের কলাম একটু বড় করা হয়েছে USD এর জন্য */
+            grid-template-columns: 200px 1fr 180px;
             align-items: center;
             gap: 20px;
             margin-bottom: 25px;
@@ -120,11 +138,11 @@
             font-size: 12px;
             color: var(--text-muted);
             font-weight: normal;
-            display: block; /* পরিমাণ বা Kg এর নিচে ছোট করে লাইভ ডলার দেখাবে */
+            display: block;
         }
         
         .text-red .usd-live-val {
-            color: #ff8a80; /* স্টক লাল হলে ডলারের টেক্সটও হালকা লালচে দেখাবে */
+            color: #ff8a80;
         }
 
         /* Axis Labels */
@@ -185,6 +203,13 @@
         <div class="title">Live Raw Material Balance Tracker</div>
     </div>
 
+    <!-- New Title Column Added Here -->
+    <div class="table-title-row">
+        <div class="table-title-text">Raw Materials Name</div>
+        <div></div> <!-- গ্রিড অ্যালাইনমেন্ট ঠিক রাখার জন্য খালি স্পেস -->
+        <div class="table-title-text" style="text-align: right;">Live Status / Stock</div>
+    </div>
+
     <!-- Materials List -->
     <div class="materials-container" id="materials-list">
         <!-- JS will dynamically inject items here -->
@@ -219,7 +244,6 @@
 </div>
 
 <script>
-    // ডেটা স্ট্রাকচার
     const materialsData = [
         { id: 1, name: 'Premium Cotton Yarn', maxQty: 10000, currentQty: 4200, unit: 'Kg', fullValue: 25000, isBlue: false },
         { id: 2, name: 'Polyester Fabric Mesh', maxQty: 10000, currentQty: 6100, unit: 'Yards', fullValue: 19000, isBlue: false },
@@ -237,7 +261,6 @@
         let lowWarningCount = 0;
 
         materialsData.forEach(mat => {
-            // লাইভ ডেমো আপডেট
             const change = Math.floor(Math.random() * 200) - 100; 
             mat.currentQty = Math.max(100, Math.min(mat.maxQty, mat.currentQty + change));
 
@@ -254,7 +277,6 @@
             const textColorClass = isLow ? 'text-red' : '';
             const nameBlueClass = mat.isBlue ? 'highlight-blue' : '';
 
-            // রো জেনারেট করা (এখানে Kg/Yards এর নিচে লাইভ USD ভ্যালু যুক্ত করা হয়েছে)
             const rowHtml = `
                 <div class="material-row">
                     <div class="info-col">
@@ -273,7 +295,6 @@
             container.innerHTML += rowHtml;
         });
 
-        // ফুটার আপডেট
         document.getElementById('total-value').innerText = `$${totalValueSum.toLocaleString()}`;
         document.getElementById('current-asset-value').innerText = `$${Math.round(currentAssetValueSum).toLocaleString()}`;
         document.getElementById('low-warning-count').innerText = `${lowWarningCount} ${lowWarningCount === 1 ? 'material' : 'materials'}`;
